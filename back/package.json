@@ -9,6 +9,7 @@
   "scripts": {
     "test": "npx ts-node-test",
     "tsc": "tsc",
+    "build": "tsc",
     "dev": "ts-node-dev index.ts",
     "lint": "eslint .",
     "start": "node build/index.js"
