@@ -1,5 +1,5 @@
 import dayjs, { Dayjs } from 'dayjs';
-import { Diagnosis, HealthCheckRatingKeys } from '../../../../types';
+import { Diagnosis, HealthCheckRatingKeys, HealthCheckRating } from '../../../../types';
 import { exhaustiveTypeGuard } from '../../../../utilities';
 
 export function convertDateToString(date: Dayjs | null | undefined): string {
