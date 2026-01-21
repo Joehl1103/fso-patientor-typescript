@@ -37,7 +37,7 @@ export function parseApiErrors(
     } else if (error?.response?.data && 
                typeof error?.response?.data === "object" && 
                Array.isArray(error?.response?.data?.error)) {
-      const errorMessageArray: string[] = error.response.data.error.map(err => {
+      const errorMessageArray: string[] = error.response.data.error.map((err: z.ZodIssue) => {
         if (err.path.length === 0 || err.path.length > 1) {
           throw new Error(`Length of array for the zod error path is: ${err.path.length}`);
         }

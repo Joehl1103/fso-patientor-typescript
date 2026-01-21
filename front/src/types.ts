@@ -111,3 +111,4 @@ export interface ConditionalData {
 
 
 export type NotificationType = "Good" | "Bad";
+
