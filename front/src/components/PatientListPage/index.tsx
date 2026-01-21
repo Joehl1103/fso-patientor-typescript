@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { Box, Table, Button, TableHead, Typography, TableCell, TableRow, TableBody } from '@mui/material';
-import axios from 'axios';
-
 import { PatientFormValues, Patient } from "../../types";
 import AddPatientModal from "../AddPatientModal";
 
@@ -29,24 +27,9 @@ const PatientListPage = ({ patients, setPatients }: Props) => {
   };
 
   const submitNewPatient = async (values: PatientFormValues) => {
-    try {
-      const patient = await patientService.create(values);
-      setPatients(patients.concat(patient));
-      setModalOpen(false);
-    } catch (e: unknown) {
-      if (axios.isAxiosError(e)) {
-        if (e?.response?.data && typeof e?.response?.data === "string") {
-          const message = e.response.data.replace('Something went wrong. Error: ', '');
-          console.error(message);
-          setError(message);
-        } else {
-          setError("Unrecognized axios error");
-        }
-      } else {
-        console.error("Unknown error", e);
-        setError("Unknown error");
-      }
-    }
+    const patient = await patientService.create(values);
+    setPatients(patients.concat(patient));
+    setModalOpen(false);
   };
 
   return (

@@ -14,3 +14,12 @@ export const patientDataSchema = z.object({
   occupation: z.string(),
   entries: z.array(entrySchema)
 });
+
+export const newPatientDataSchema = z.object({
+  name: z.string(),
+  dateOfBirth: z.string().date(),
+  ssn: z.string(),
+  gender: z.enum(Gender),
+  occupation: z.string(),
+  entries: z.array(entrySchema).optional()
+});
