@@ -6,7 +6,7 @@ const router = express.Router();
 import * as z from 'zod';
 
 router.get('/', (_req: Request, res: Response): void => {
-  res.send(patientsService.getPatientsWithoutSsns());
+  res.send(patientsService.getPatients());
 });
 
 /**

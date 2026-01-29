@@ -3,6 +3,25 @@ import assert from 'node:assert';
 import request from 'supertest';
 import app from './../../app';
 
+void test('patient list does not include entries', async () => {
+  const response = await request(app)
+    .get('/api/patients')
+    .expect(200);
+  
+  const patients = response.body as Array<Record<string, unknown>>;
+  assert.ok(patients.length > 0, 'Expected at least one patient in the response');
+  
+  for (const patient of patients) {
+    assert.strictEqual(patient.entries, undefined, `Patient ${patient.name} should not have entries in list response`);
+    assert.strictEqual(patient.ssn, undefined, `Patient ${patient.name} should not have ssn in list response`);
+    assert.ok(patient.id, 'Patient should have id');
+    assert.ok(patient.name, 'Patient should have name');
+    assert.ok(patient.gender, 'Patient should have gender');
+    assert.ok(patient.occupation, 'Patient should have occupation');
+    assert.ok(patient.dateOfBirth, 'Patient should have dateOfBirth');
+  }
+});
+
 void test('get patient by id', async () => {
   await request(app)
     .get('/api/patients/d2773336-f723-11e9-8f0b-362b9e155667')
