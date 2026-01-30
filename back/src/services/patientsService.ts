@@ -1,20 +1,19 @@
-import { NewPatientEntry, Patient, PatientWithoutSsn } from "../data/types";
+import { NewPatientEntry, Patient, NonSensitivePatient } from "../data/types";
 import data from './../data/patients';
 import { v1 as uuid } from 'uuid';
 import { patientDataSchema } from "../utils/patientValidation";
 
-function getPatientsWithoutSsns(): PatientWithoutSsn[] {
-  return data.map((patient: Patient): PatientWithoutSsn => {
+function getPatients(): NonSensitivePatient[] {
+  return data.map((patient: Patient): NonSensitivePatient => {
     return {
       id: patient.id,
       name: patient.name,
       dateOfBirth: patient.dateOfBirth,
       gender: patient.gender,
-      occupation: patient.occupation,
-      entries: patient.entries
+      occupation: patient.occupation
     };
   });
-};
+}
 
 function getPatientById(id: string) {
   const patientArray: Patient[] = data.filter((patient: Patient) => {
@@ -40,7 +39,7 @@ function addPatient(newPatientEntry: NewPatientEntry): Patient {
 }
 
 export default {
-  getPatientsWithoutSsns,
+  getPatients,
   getPatientById,
   addPatient
 };
