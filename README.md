@@ -83,6 +83,10 @@ Frontend (`front/`):
 - `npm run preview` — preview build
 - `npm run lint` — lint
 
+## Testing
+
+Testing uses Node's built-in test runner with Supertest for backend API routes, plus lightweight unit tests in the frontend for typed service helpers and data mapping logic. The focus is on verifying API response shapes and entry creation behavior while keeping front-end tests centered on pure function outputs.
+
 ## Troubleshooting
 
 - If the frontend reports a ping failure, verify the backend is running and reachable at `/api/ping`.
