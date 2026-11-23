@@ -1,0 +1,15 @@
+.entryFormHead{
+	display: 'flex';
+	flex-direction: 'row';
+	margin-left: 0;
+	padding-left: 0;
+}
+
+.patientDisplayTableContainer {
+	margin: 1em 0;
+	width: 300;
+}
+
+.patientName {
+	margin: 1em 0 0 0;
+}

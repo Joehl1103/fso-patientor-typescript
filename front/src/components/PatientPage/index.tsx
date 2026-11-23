@@ -10,6 +10,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { IconProps } from '@mui/material';
 import EntryDisplay from './Entries/EntryDisplay.tsx';
 import EntryForm from './Entries/EntryForm/index.tsx';
+import styles from "./patient-page.module.css";
 
 interface IParams {
   id: string;
@@ -36,13 +37,7 @@ function EntryFormDisplay(
     ): void
   }) {
   return (
-    <div style={
-      {
-        display: 'flex',
-        flexDirection: 'row',
-        marginLeft: 0,
-        paddingLeft: 0,
-      }}>
+    <div className={styles.entryFormHead}>
       <IconButton
         onClick={handleEntryFormCheck}
         size='small'
@@ -60,6 +55,7 @@ function EntryFormDisplay(
     </div>
   );
 }
+
 function PatientPage() {
   const [patient, setPatient] = useState<Patient>();
   const [entries, setEntries] = useState<Entry[]>([]);
@@ -82,14 +78,15 @@ function PatientPage() {
     event.preventDefault();
     setEntryFormVisible(true);
   }
+
   const iconSize: IconProps['fontSize'] = 'large';
   return (
     <div>
-      <Typography variant='h4'>
+      <Typography className={styles.patientName} variant='h4'>
         {patient.name}{' '}{patient.gender === 'male' ? <MaleIcon fontSize={iconSize} /> : <FemaleIcon fontSize={iconSize} />}
       </Typography>
       <div>
-        <TableContainer style={{ marginTop: 40, marginBottom: 20, width: 300 }}>
+        <TableContainer className={styles.patientDisplayTableContainer} >
           <Table size='small' >
             <TableBody>
               <RowAndCell key="dob" left={'Date of Birth:'} right={patient.dateOfBirth} />
