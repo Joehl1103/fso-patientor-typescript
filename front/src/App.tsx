@@ -14,15 +14,22 @@ import PatientPage from "./components/PatientPage";
 
 const App = () => {
   const [patients, setPatients] = useState<PatientListItem[]>([]);
+	const [error,setError] = useState<string>("");
 
   useEffect(() => {
-    void axios.get<void>(`${apiBaseUrl}/ping`);
-	
-    const fetchPatientList = async () => {
-      const patients = await patientService.getAll();
-      setPatients(patients);
-    };
-    setInterval(async () => fetchPatientList(),500);
+		axios.get<void>(`${apiBaseUrl}/ping`)
+			.then(r => {
+				const fetchPatientList = async () => {
+					const patients = await patientService.getAll();
+					setPatients(patients);
+				};
+				setInterval(async () => fetchPatientList(),500);
+			})
+			.catch(e => {
+				if(e instanceof Error){
+					setError(e.message);
+				}
+			});
   }, []);
   const theme = createTheme();
   return (
@@ -39,7 +46,7 @@ const App = () => {
             </Button>
             <Divider hidden />
             <Routes>
-              <Route path="/" element={<PatientListPage patients={patients} setPatients={setPatients} />} />
+              <Route path="/" element={<PatientListPage patients={patients} setPatients={setPatients} error={error} />} />
               <Route path="/:id" element={<PatientPage />} />
             </Routes>
           </Container>

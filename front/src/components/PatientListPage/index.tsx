@@ -13,9 +13,10 @@ import { Link } from 'react-router-dom';
 interface Props {
   patients: PatientListItem[]
   setPatients: React.Dispatch<React.SetStateAction<PatientListItem[]>>
+	error: string;
 }
 
-const PatientListPage = ({ patients, setPatients }: Props) => {
+const PatientListPage = ({ patients, setPatients, error: errorFromApp }: Props) => {
 	
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [error, setError] = useState<string>();
@@ -33,9 +34,18 @@ const PatientListPage = ({ patients, setPatients }: Props) => {
     setModalOpen(false);
   };
 
+	if(errorFromApp){
+		switch(errorFromApp){
+			case "Network Error":
+				return <h2 className="patient-page-temp">503: Service Unavailable</h2>;
+			default:
+				return <h2 className="patient-page-temp">something else</h2>;
+		}
+	}
+
 	if(patients.length === 0){
 		return  (
-			<Box className="circular-progress">
+			<Box className="patient-page-temp">
 				<br/>
 				<CircularProgress/>
 				<p>Loading patients....</p>
