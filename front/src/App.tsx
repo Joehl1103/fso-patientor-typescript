@@ -38,10 +38,10 @@ const App = () => {
       <div className="App">
         <Router>
           <Container>
-            <Typography variant="h3" style={{ marginBottom: "0.5em" }}>
+            <Typography className="app-header" variant="h3">
               Patientor
             </Typography>
-            <Button component={Link} to="/" variant="contained" color="primary" style={{ marginBottom: 15 }}>
+            <Button className="app-home-button" component={Link} to="/" variant="contained" color="primary">
               Home
             </Button>
             <Divider hidden />
