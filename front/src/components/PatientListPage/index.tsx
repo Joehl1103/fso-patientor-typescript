@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 // Material UI
 import { Box, Table, Button, TableHead, Typography, TableCell, TableRow, TableBody } from '@mui/material';
 import CircularProgress from "@mui/material/CircularProgress";
+import LaunchIcon from '@mui/icons-material/Launch';
 
 // Shared types
 import { PatientFormValues, PatientListItem } from "../../types";
@@ -82,7 +83,12 @@ const PatientListPage = ({ patients, setPatients, error: errorFromApp }: Props) 
 					<TableBody>
 						{Object.values(patients).map((patient: PatientListItem) => (
 							<TableRow key={patient.id}>
-								<TableCell><Link to={`/${patient.id}`}>{patient.name}</Link></TableCell>
+								<TableCell>
+									<span className={styles.patientName}>
+										{patient.name}
+										<Link to={`/${patient.id}`}><LaunchIcon fontSize="small" /></Link>
+									</span>
+								</TableCell>
 								<TableCell>{patient.gender}</TableCell>
 								<TableCell>{patient.occupation}</TableCell>
 								<TableCell>
@@ -106,3 +112,4 @@ const PatientListPage = ({ patients, setPatients, error: errorFromApp }: Props) 
 }};
 
 export default PatientListPage;
+

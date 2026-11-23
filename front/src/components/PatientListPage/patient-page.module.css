@@ -11,3 +11,11 @@
   min-height: calc(50vh - 9rem);
 }
 
+.patientName {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.25em;
+	margin-bottom: 0;
+}
+
