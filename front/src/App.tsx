@@ -44,7 +44,7 @@ const App = () => {
             <Button className="app-home-button" component={Link} to="/" variant="contained" color="primary">
               Home
             </Button>
-            <Divider hidden />
+            <Divider sx={{ margin: "1em 0",border: "none",borderTop: "1px solid black" }}/>
             <Routes>
               <Route path="/" element={<PatientListPage patients={patients} setPatients={setPatients} error={error} />} />
               <Route path="/:id" element={<PatientPage />} />
