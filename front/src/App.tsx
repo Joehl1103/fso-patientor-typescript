@@ -6,16 +6,13 @@ import axios from "axios";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 
 // Material UI
-import { Button, Divider, Container, Typography } from '@mui/material';
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
+import { Button, Divider, Container, Typography, IconButton } from '@mui/material';
+import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 
 // Shared types and config
-import { Button, Divider, Container, Typography, IconButton } from '@mui/material';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import ModeNightIcon from '@mui/icons-material/ModeNight';
 import { useMemo } from "react";
-import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 import { apiBaseUrl } from "./constants";
 import { PatientListItem } from "./types";
 
@@ -66,7 +63,6 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div>
 			<IconButton onClick={toggleColorMode} color="inherit">
 				{mode === 'dark' ? <LightModeIcon/> : <ModeNightIcon/>}
 			</IconButton>
