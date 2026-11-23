@@ -1,0 +1,9 @@
+.circular-progress {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/*the entire viewport height minus the approximate height of Home and Patientor*/
+  min-height: calc(50vh - 9rem);
+}
+

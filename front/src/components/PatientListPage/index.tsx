@@ -35,9 +35,10 @@ const PatientListPage = ({ patients, setPatients }: Props) => {
 
 	if(patients.length === 0){
 		return  (
-			<Box>
+			<Box className="circular-progress">
 				<br/>
 				<CircularProgress/>
+				<p>Loading patients....</p>
 			</Box>
 		);
 	} else {
