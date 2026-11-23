@@ -10,4 +10,12 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
+	<script>
+		(function(){
+			try {
+				var mode = localStorage.getItem("themeMode") || "light";
+				document.documentElement.setAttribute("data-mui-color-scheme",mode === 'dark' ? 'dark' : 'light');
+			} catch (e) {}
+		})();
+	</script>
 </html>
