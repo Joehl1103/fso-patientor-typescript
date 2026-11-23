@@ -1,6 +1,6 @@
 .buttonRow {
-	display: flex !important;
-	justify-content: space-between !important;
+	display: flex;
+	justify-content: space-between;
 	align-items: center;
 	width: 100%;
 }

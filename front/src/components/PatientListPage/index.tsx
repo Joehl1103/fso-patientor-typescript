@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Box, Table, Button, TableHead, Typography, TableCell, TableRow, TableBody } from '@mui/material';
+import styles from "./patient-page.module.css";
 import CircularProgress from "@mui/material/CircularProgress";
 import { PatientFormValues, PatientListItem } from "../../types";
 import AddPatientModal from "../AddPatientModal";
@@ -37,15 +38,15 @@ const PatientListPage = ({ patients, setPatients, error: errorFromApp }: Props) 
 	if(errorFromApp){
 		switch(errorFromApp){
 			case "Network Error":
-				return <h2 className="patient-page-temp">503: Service Unavailable</h2>;
+				return <h2 className={styles.patientPageTemp}>503: Service Unavailable</h2>;
 			default:
-				return <h2 className="patient-page-temp">something else</h2>;
+				return <h2 className={styles.patientPageTemp}>something else</h2>;
 		}
 	}
 
 	if(patients.length === 0){
 		return  (
-			<Box className="patient-page-temp">
+			<Box className={styles.patientPageTemp}>
 				<br/>
 				<CircularProgress/>
 				<p>Loading patients....</p>
