@@ -55,9 +55,14 @@ const App = () => {
 			});
   }, []);
 
+	function handleSetMode(){
+		const newMode =  mode === 'dark' ? 'light' : 'dark';
+		setMode(newMode);
+	}
+
 	function ColorModeToggle(){
 		return (
-			<IconButton onClick={() => setMode(mode === 'dark' ? 'light' : 'dark')} color="inherit">
+			<IconButton onClick={handleSetMode} color="inherit">
 				{mode === 'dark' ? <LightModeIcon/> : <ModeNightIcon/>}
 			</IconButton>
 		);
