@@ -16,7 +16,7 @@ const HEALTHBAR_TEXTS = [
 
 const HealthRatingBar = ({ rating, showText }: BarProps) => {
   return (
-    <div className="health-bar">
+    <div>
       <Rating
         className={styles.healthRating}
         readOnly

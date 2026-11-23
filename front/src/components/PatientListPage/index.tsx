@@ -54,7 +54,7 @@ const PatientListPage = ({ patients, setPatients, error: errorFromApp }: Props) 
 		);
 	} else {
 		return (
-			<div className="App">
+			<div>
 				<Box>
 					<Typography align="center" variant="h6">
 						Patient list

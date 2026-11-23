@@ -36,13 +36,13 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div className="App">
+      <div>
         <Router>
           <Container>
-            <Typography className="app-header" variant="h3">
+            <Typography className={styles.appHeader} variant="h3">
               Patientor
             </Typography>
-            <Button className="app-home-button" component={Link} to="/" variant="contained" color="primary">
+            <Button className={styles.appHomeButton} component={Link} to="/" variant="contained" color="primary">
               Home
             </Button>
             <Divider className={styles.appDivider} />
