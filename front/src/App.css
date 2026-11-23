@@ -3,6 +3,6 @@
 	margin-bottom: 0.5em;
 	text-align: center;
 }
-.app-home-button {
+.app-home-button.MuiTypography-root {
 	margin-bottom: 15;
 }

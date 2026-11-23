@@ -1,6 +1,7 @@
 import { useState, SyntheticEvent } from "react";
 
 import { TextField, InputLabel, MenuItem, Select, Grid, Button, SelectChangeEvent } from '@mui/material';
+import styles from "./add-patient-form.module.css";
 
 import { PatientFormValues, Gender } from "../../types";
 
@@ -93,29 +94,23 @@ const AddPatientForm = ({ onCancel, onSubmit }: Props) => {
           )}
         </Select>
 
-        <Grid>
-          <Grid item>
+        <Grid className={styles.buttonRow} container>
             <Button
+							className={styles.apfBtnCancel}
               color="secondary"
               variant="contained"
-              style={{ float: "left" }}
               type="button"
               onClick={onCancel}
             >
               Cancel
             </Button>
-          </Grid>
-          <Grid item>
             <Button
-              style={{
-                float: "right",
-              }}
+							className={styles.apfBtnAdd}
               type="submit"
               variant="contained"
             >
               Add
             </Button>
-          </Grid>
         </Grid>
       </form>
     </div>

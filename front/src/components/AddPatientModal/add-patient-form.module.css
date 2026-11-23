@@ -1,0 +1,15 @@
+.buttonRow {
+	display: flex !important;
+	justify-content: space-between !important;
+	align-items: center;
+	width: 100%;
+}
+
+/* .apfBtnCancel { */
+/* 	float: left !important; */
+/* 	display: inline-block !important; */
+/* } */
+
+/* .aptBtnAdd { */
+/* 	float: "right"; */
+/* } */

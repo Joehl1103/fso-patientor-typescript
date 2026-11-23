@@ -18,7 +18,7 @@ const App = () => {
 
   useEffect(() => {
 		axios.get<void>(`${apiBaseUrl}/ping`)
-			.then(r => {
+			.then((_) => {
 				const fetchPatientList = async () => {
 					const patients = await patientService.getAll();
 					setPatients(patients);
