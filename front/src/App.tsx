@@ -11,6 +11,11 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
 // Shared types and config
+import { Button, Divider, Container, Typography, IconButton } from '@mui/material';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import ModeNightIcon from '@mui/icons-material/ModeNight';
+import { useMemo } from "react";
+import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 import { apiBaseUrl } from "./constants";
 import { PatientListItem } from "./types";
 
@@ -27,8 +32,22 @@ import styles from "./App.module.css";
 const App = () => {
   const [patients, setPatients] = useState<PatientListItem[]>([]);
 	const [error,setError] = useState<string>("");
+	const [mode,setMode] = useState<'light' | 'dark'>(() => {return(localStorage.getItem('themeMode') as 'light' | 'dark') || 'light';});
+
+	const theme = useMemo(
+		() => createTheme({
+			palette: {
+				mode,
+			}
+		}),[mode]
+	);
+
+	function toggleColorMode(){
+		setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
+	}
 
   useEffect(() => {
+		localStorage.setItem('themeMode',mode);
 		axios.get<void>(`${apiBaseUrl}/ping`)
 			.then((_) => {
 				const fetchPatientList = async () => {
@@ -42,12 +61,16 @@ const App = () => {
 					setError(e.message);
 				}
 			});
-  }, []);
-  const theme = createTheme();
+  }, [mode]);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <div>
+			<IconButton onClick={toggleColorMode} color="inherit">
+				{mode === 'dark' ? <LightModeIcon/> : <ModeNightIcon/>}
+			</IconButton>
+      <div className="App">
         <Router>
           <Container>
             <Typography className={styles.appHeader} variant="h3">
@@ -69,3 +92,4 @@ const App = () => {
 };
 
 export default App;
+
