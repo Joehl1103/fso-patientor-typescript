@@ -1,0 +1,22 @@
+@import "@radix-ui/colors/sky.css";
+@import "@radix-ui/colors/orange.css";
+@import "@radix-ui/colors/bronze.css";
+@import "@radix-ui/colors/tomato.css";
+
+:root[data-mui-color-scheme='dark'] {
+	--primary-main: var(--bronze-12);
+	--primary-font: var(--sky-12);
+	--button-color: var(--tomato-1);
+	--button-font-color: var(--sky-12);
+	--button-color-hover: var(--bronze-7);
+	--main-divider-color: var(--tomato-12);
+}
+
+:root[data-mui-color-scheme='light']{
+	--primary-main: var(--sky-1);
+	--primary-font: var(--sky-3);
+	--button-color: var(--bronze-5);
+	--button-color-hover: var(--bronze-7);
+	--button-font-color: var(--sky-12);
+	--main-divider-color: black;
+}

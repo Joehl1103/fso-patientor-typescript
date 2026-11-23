@@ -1,26 +1,20 @@
 import { createTheme } from "@mui/material/styles";
-import { bronze, sky } from "@radix-ui/colors";
+import { bronze, sky,skyDark,tomato,tomatoDark,amber } from "@radix-ui/colors";
 
 export type ColorMode = "light" | "dark";
 
 const colorTokens = {
   light: {
-    primaryMain: bronze.bronze12,
-    primaryContrastText: "#ffffff",
-    backgroundDefault: sky.sky1,
-    backgroundPaper: "#ffffff",
-    textPrimary: "rgba(0, 0, 0, 0.87)",
-    textSecondary: "rgba(0, 0, 0, 0.6)",
-    divider: "rgba(0, 0, 0, 0.12)",
+    primaryMain: tomato.tomato1,
+    primaryContrastText: skyDark.sky1,
+    backgroundDefault: amber.amber1,
+    textPrimary: sky.sky12,
   },
   dark: {
-    primaryMain: "#90caf9",
+    primaryMain: bronze.bronze2,
     primaryContrastText: "#003258",
-    backgroundDefault: "#0d1117",
-    backgroundPaper: "#161b22",
-    textPrimary: "#ffffff",
-    textSecondary: "rgba(255, 255, 255, 0.7)",
-    divider: "rgba(255, 255, 255, 0.12)",
+    backgroundDefault: skyDark.sky1,
+    textPrimary: bronze.bronze2,
   },
 } as const;
 
@@ -36,15 +30,13 @@ const createAppTheme = (mode: ColorMode) => {
       },
       background: {
         default: tokens.backgroundDefault,
-        paper: tokens.backgroundPaper,
       },
       text: {
         primary: tokens.textPrimary,
-        secondary: tokens.textSecondary,
-      },
-      divider: tokens.divider,
+      }
     },
   });
 };
 
 export default createAppTheme;
+
