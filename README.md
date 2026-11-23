@@ -87,6 +87,34 @@ Frontend (`front/`):
 
 Testing uses Node's built-in test runner with Supertest for backend API routes, plus lightweight unit tests in the frontend for typed service helpers and data mapping logic. The focus is on verifying API response shapes and entry creation behavior while keeping front-end tests centered on pure function outputs.
 
+## Frontend styles
+
+Component styles live in a colocated `*.module.css` file and are applied as `className={styles.className}`.
+
+Material UI gives each component a class, usually `MuiComponent-root`, and gives inner pieces a slot class such as `MuiRating-iconFilled`. Those rules are injected when the component renders. A CSS module class is also a single class. When both rules set the same property, the later stylesheet wins, and that is usually Material UI.
+
+Override the MUI class when the property you are changing is one that class already sets. Common cases are margin and padding on typography, labels, buttons, and checkboxes; borders on dividers; flex direction on groups; and color on icons. Pair your class with the MUI class so the selector is more specific:
+
+```css
+.title:global(.MuiTypography-root) {
+  margin-bottom: 12px;
+}
+```
+
+`:global` keeps the `Mui*` name from being hashed. The element must carry both classes.
+
+A plain module class is enough when that component does not set the property. A `Box` does not set `display: flex`. A width on a control that has no width rule does not need the MUI class.
+
+Use a descendant `:global` when the node is inside the component and you cannot put your class on it:
+
+```css
+.rating :global(.MuiRating-iconFilled) {
+  color: #ff6d75;
+}
+```
+
+To decide, inspect the element. If a `Mui*` class on that node, or on the inner node you mean to change, already declares the property, add that class with `:global`. Slot names are listed in the component's CSS API. Only the slot you are changing needs the override.
+
 ## Troubleshooting
 
 - If the frontend reports a ping failure, verify the backend is running and reachable at `/api/ping`.
