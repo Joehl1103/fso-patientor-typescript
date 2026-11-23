@@ -1,0 +1,7 @@
+.healthRating :global(.MuiRating-iconFilled) {
+	color: #ff6d75;
+}
+
+.healthRating :global(.MuiRating-iconHover) {
+	color: #ff3d47;
+}

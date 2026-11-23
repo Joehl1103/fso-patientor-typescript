@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import { NotificationType } from '../../../../types.ts';
+import styles from "./Notification.module.css";
 
 interface Props {
   message: string | undefined,
@@ -12,14 +13,9 @@ function Notification({ message, type }: Props) {
     return null;
   }
 
-  const notificationStyleConfig = {
-    backgroundColor: type === "Good" ? "#8bc34a" : "#f44336",
-    padding: 2,
-    margin: 1,
-    textAlign: "center"
-  };
+  const notificationClass = type === "Good" ? styles.notificationGood : styles.notificationError;
   return (
-    <Box sx={notificationStyleConfig}>
+    <Box className={`${styles.notification} ${notificationClass}`}>
       <Typography variant="body2">{message}</Typography>
     </Box>
   );

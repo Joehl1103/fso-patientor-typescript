@@ -11,6 +11,7 @@ import patientService from "./services/patients";
 import PatientListPage from "./components/PatientListPage";
 
 import PatientPage from "./components/PatientPage";
+import styles from "./App.module.css";
 
 const App = () => {
   const [patients, setPatients] = useState<PatientListItem[]>([]);
@@ -44,7 +45,7 @@ const App = () => {
             <Button className="app-home-button" component={Link} to="/" variant="contained" color="primary">
               Home
             </Button>
-            <Divider sx={{ margin: "1em 0",border: "none",borderTop: "1px solid black" }}/>
+            <Divider className={styles.appDivider} />
             <Routes>
               <Route path="/" element={<PatientListPage patients={patients} setPatients={setPatients} error={error} />} />
               <Route path="/:id" element={<PatientPage />} />

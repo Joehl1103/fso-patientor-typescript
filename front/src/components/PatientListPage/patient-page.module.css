@@ -1,3 +1,7 @@
+.patientTable {
+	margin-bottom: 1em;
+}
+
 .patientPageTemp {
 	display: flex;
 	flex-direction: column;

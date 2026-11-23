@@ -60,7 +60,7 @@ const PatientListPage = ({ patients, setPatients, error: errorFromApp }: Props) 
 						Patient list
 					</Typography>
 				</Box>
-				<Table style={{ marginBottom: "1em" }}>
+				<Table className={styles.patientTable}>
 					<TableHead>
 						<TableRow>
 							<TableCell>Name</TableCell>

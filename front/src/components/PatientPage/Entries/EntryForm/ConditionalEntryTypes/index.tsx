@@ -4,6 +4,7 @@ import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
 import { convertDateToString } from '../utils';
+import styles from "./conditional-entry-types.module.css";
 
 interface Props {
   entryType: EntryType,
@@ -53,10 +54,10 @@ function ConditionalEntryTypes(
   switch (entryType) {
     case EntryType.HEALTHCHECK:
       return (
-        <Box sx={{ marginTop: 2 }}>
+        <Box className={styles.healthCheckBox}>
           <InputLabel>Healthcheck rating:</InputLabel>
           <Select
-            sx={{ width: 200 }}
+            className={styles.fieldWidth}
             label="Healthcheck rating"
             value={conditionalData.healthCheckRatingKey}
             onChange={({ target }) => {
@@ -95,7 +96,7 @@ function ConditionalEntryTypes(
                     name="startDate"
                     value={startDate ? dayjs(startDate) : null}
                     onChange={(value) => { handleChange("startDate", value); }}
-                    sx={{ width: 200 }}
+                    className={styles.fieldWidth}
                   />
                 </Box>
                 <Box>
@@ -103,7 +104,7 @@ function ConditionalEntryTypes(
                   <DatePicker
                     value={endDate ? dayjs(endDate) : null}
                     onChange={(value) => { handleChange("endDate", value); }}
-                    sx={{ width: 200 }}
+                    className={styles.fieldWidth}
                   />
                 </Box>
               </Box>
@@ -114,14 +115,14 @@ function ConditionalEntryTypes(
     case EntryType.HOSPITAL:
       return (
         <Box>
-          <Box sx={{ paddingBottom: 1 }}>
-            <InputLabel sx={{ paddingBottom: 1 }}>Discharge</InputLabel>
+          <Box className={styles.dischargeBlock}>
+            <InputLabel className={styles.dischargeLabel}>Discharge</InputLabel>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
                 label="discharge date"
                 value={conditionalData.discharge.date ? dayjs(conditionalData.discharge.date) : null}
                 onChange={(value) => { handleChange("date", value); }}
-                sx={{ width: 200 }}
+                className={styles.fieldWidth}
               />
             </LocalizationProvider>
           </Box>

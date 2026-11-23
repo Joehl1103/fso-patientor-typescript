@@ -1,0 +1,8 @@
+.entryTypeLabel:global(.MuiFormLabel-root) {
+	font-size: 15px;
+}
+
+.entryTypeGroup:global(.MuiFormGroup-root) {
+	display: flex;
+	flex-direction: row;
+}

@@ -1,0 +1,15 @@
+.healthCheckBox {
+	margin-top: 16px;
+}
+
+.fieldWidth {
+	width: 200px;
+}
+
+.dischargeBlock {
+	padding-bottom: 8px;
+}
+
+.dischargeLabel:global(.MuiFormLabel-root) {
+	padding-bottom: 8px;
+}

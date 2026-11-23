@@ -1,0 +1,19 @@
+.headerRow {
+	display: flex;
+	flex-direction: row;
+	gap: 5px;
+}
+
+.closeFormRow {
+	display: flex;
+	flex-direction: row;
+}
+
+.closeFormLabel:global(.MuiTypography-root) {
+	margin-left: 8px;
+	margin-top: 4.8px;
+}
+
+.closeFormCheckbox:global(.MuiCheckbox-root) {
+	padding-top: 0;
+}

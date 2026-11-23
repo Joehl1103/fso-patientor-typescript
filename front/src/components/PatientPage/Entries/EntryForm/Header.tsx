@@ -1,21 +1,18 @@
 import { Typography, Checkbox, Box } from '@mui/material';
+import styles from "./Header.module.css";
 function Header({ setEntryFormVisible }: { setEntryFormVisible: React.Dispatch<React.SetStateAction<boolean>> }) {
   return (
-    <Box style={{
-      display: "flex",
-      flexDirection: 'row',
-      gap: 5
-    }}>
+    <Box className={styles.headerRow}>
       <Typography variant='body1'>Add Entry</Typography>
-      <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+      <Box className={styles.closeFormRow}>
         <Typography
           variant='body2'
-          sx={{ marginLeft: 1, marginTop: 0.6 }}
+          className={styles.closeFormLabel}
         >close form</Typography>
         <Checkbox
           size="small"
           onChange={() => setEntryFormVisible(false)}
-          sx={{ paddingTop: 0 }}
+          className={styles.closeFormCheckbox}
         />
       </Box>
     </Box>

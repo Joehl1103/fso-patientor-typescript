@@ -1,0 +1,65 @@
+.itemDivWithIcon {
+	display: flex;
+	flex-direction: row; 
+	column-gap: 5;
+}
+
+.baseEntryDisplay {
+	margin-left: 20;
+}
+
+.sickLeaveUL {
+	margin-left: 13; 
+	margin-top: 0;
+}
+
+.hospitalType {
+	display: flex; 
+	flex-direction: column; 
+	row-gap: 5;
+}
+
+.diagnosisListBox {
+	margin-left: 11.2px;
+}
+
+.diagnosisList {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.iconRowText:global(.MuiTypography-root) {
+	margin-top: 4px;
+	margin-bottom: 0;
+}
+
+.healthCritical:global(.MuiSvgIcon-root) {
+	color: red;
+}
+
+.healthHigh:global(.MuiSvgIcon-root) {
+	color: orange;
+}
+
+.healthLow:global(.MuiSvgIcon-root) {
+	color: yellow;
+}
+
+.healthHealthy:global(.MuiSvgIcon-root) {
+	color: green;
+}
+
+.dischargeNote {
+	padding: 0;
+	padding-left: 5px;
+	margin: 0;
+}
+
+.entryBlock {
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.entryBlockInner {
+	margin-bottom: 20px;
+}

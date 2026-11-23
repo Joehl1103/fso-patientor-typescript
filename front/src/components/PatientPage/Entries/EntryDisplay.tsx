@@ -10,6 +10,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Box, Typography } from "@mui/material";
 import diagnosesService from "../../../services/diagnoses";
 import { exhaustiveTypeGuard } from "../../../utilities";
+import styles from "./EntryDisplay.module.css";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export async function fetchDiagnoses(codes: string[]) {
@@ -24,8 +25,8 @@ function DiagnosticCodes({ diagnoses }: { diagnoses: Diagnosis[] }) {
       <ItemDivWithIcon
         icon={ChevronRightIcon}
         text={"Diagnostic codes:"} />
-      <Box sx={{ marginLeft: 1.4 }} >
-        <ul style={{ marginTop: 5, marginBottom: 5 }}>
+      <Box className={styles.diagnosisListBox} >
+        <ul className={styles.diagnosisList}>
           {diagnoses.map((d) => (
             <li key={d.code}><Typography variant="body2">{`${d.code}: ${d.name}.`}</Typography></li>
           ))}
@@ -46,15 +47,15 @@ function ItemDivWithIcon(
       typeIcon?: ComponentType<SvgIconProps>,
       healthIconObject?: {
         icon: ComponentType<SvgIconProps>,
-        iconColor: string
+        iconClassName: string
       }
     }
 ) {
   return (
-    <div style={{ display: "flex", flexDirection: "row", columnGap: 5 }}>
+    <div className={styles.itemDivWithIcon}>
       <Icon fontSize="small" />
-      <Typography variant="body2" sx={{ marginTop: 0.5, marginBottom: 0 }}>{text}</Typography>
-      {healthIconObject ? <healthIconObject.icon sx={{ color: healthIconObject.iconColor }} /> : null}
+      <Typography variant="body2" className={styles.iconRowText}>{text}</Typography>
+      {healthIconObject ? <healthIconObject.icon className={healthIconObject.iconClassName} /> : null}
     </div>
   );
 }
@@ -84,7 +85,7 @@ function BaseEntryDisplay({ entry }: { entry: Entry }) {
           typeIcon={Icon}
         />
       </div>
-      <div style={{ marginLeft: 20 }}>
+      <div className={styles.baseEntryDisplay}>
         <ItemDivWithIcon
           icon={ChevronRightIcon}
           text={description} />
@@ -112,23 +113,23 @@ function EntryDisplay({ entry }: { entry: Entry }) {
     return (
       <div>
         <ItemDivWithIcon icon={ChevronRightIcon} text={"Sick Leave:"} />
-        <ul style={{ marginLeft: 13, marginTop: 0 }}>
+        <ul className={styles.sickLeaveUL}>
           <li><Typography variant="body2"> Start: {sickLeave.startDate}</Typography></li>
           <li><Typography variant="body2">End: {sickLeave.endDate}</Typography></li>
         </ul>
       </div>
     );
   }
-  function setHealthIconColor(rating: HealthCheckRating) {
+  function setHealthIconClass(rating: HealthCheckRating) {
     switch (rating) {
       case HealthCheckRating["CriticalRisk"]:
-        return 'red';
+        return styles.healthCritical;
       case HealthCheckRating["HighRisk"]:
-        return 'orange';
+        return styles.healthHigh;
       case HealthCheckRating["LowRisk"]:
-        return 'yellow';
+        return styles.healthLow;
       case HealthCheckRating["Healthy"]:
-        return 'green';
+        return styles.healthHealthy;
       default:
         exhaustiveTypeGuard(rating);
     }
@@ -138,18 +139,18 @@ function EntryDisplay({ entry }: { entry: Entry }) {
     switch (entry.type) {
       case EntryType.HOSPITAL:
         return (
-          <div style={{ display: 'flex', flexDirection: 'column', rowGap: 5 }}>
+          <div className={styles.hospitalType} >
             <ItemDivWithIcon
               icon={ChevronRightIcon}
               text={`Discharge notes: discharged on ${entry.discharge.date}: ${entry.discharge.criteria}`}
             />
-            <p style={{ padding: 0, paddingLeft: 5, margin: 0 }}><i></i></p>
+            <p className={styles.dischargeNote}><i></i></p>
           </div>
         );
       case EntryType.HEALTHCHECK:
         const healthIconObject = {
           icon: FavoriteIcon,
-          iconColor: setHealthIconColor(entry.healthCheckRating)
+          iconClassName: setHealthIconClass(entry.healthCheckRating)
         };
         return (
           <div>
@@ -178,8 +179,8 @@ function EntryDisplay({ entry }: { entry: Entry }) {
 
   return (
     <div>
-      <div style={{ marginTop: 10, marginBottom: 20 }}>
-        <div style={{ marginBottom: 20 }}>
+      <div className={styles.entryBlock}>
+        <div className={styles.entryBlockInner}>
           <BaseEntryDisplay entry={entry} />
           {diagnoses.length > 0 ? <DiagnosticCodes diagnoses={diagnoses} /> : null}
           <div>{renderTypes(entry)}</div>

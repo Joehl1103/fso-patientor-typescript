@@ -1,5 +1,6 @@
 import { BaseEntryFormTypes, EntryType } from "../../../../types";
 import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material';
+import styles from "./EntryTypeSelect.module.css";
 
 interface Props {
   baseEntryFormData: BaseEntryFormTypes,
@@ -25,10 +26,10 @@ function EntryTypeSelect({ baseEntryFormData, setBaseEntryFormData }: Props) {
   }
   return (
     <FormControl >
-      <FormLabel sx={{ fontSize: 15 }}>Entry type</FormLabel>
+      <FormLabel className={styles.entryTypeLabel}>Entry type</FormLabel>
       <RadioGroup
         defaultValue="Healthcheck"
-        sx={{ display: "flex", flexDirection: 'row' }}
+        className={styles.entryTypeGroup}
         onChange={handleEntryTypeChange}>
         {["Healthcheck", "Occupational Healthcare", "Hospital"].map(v => {
           return (

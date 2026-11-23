@@ -1,0 +1,13 @@
+.notification {
+	padding: 16px;
+	margin: 8px;
+	text-align: center;
+}
+
+.notificationGood {
+	background-color: #8bc34a;
+}
+
+.notificationError {
+	background-color: #f44336;
+}

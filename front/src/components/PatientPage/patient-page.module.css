@@ -13,3 +13,28 @@
 .patientName {
 	margin: 1em 0 0 0;
 }
+
+.patientRow {
+	width: 200px;
+}
+
+.patientLabelCell:global(.MuiTableCell-root) {
+	font-weight: bold;
+	width: 100px;
+}
+
+.addEntryButton {
+	cursor: pointer;
+}
+
+.addEntryButton:hover {
+	color: #1976d2;
+}
+
+.addEntryLabel:global(.MuiTypography-root) {
+	margin-top: 12.8px;
+}
+
+.entriesHeading:global(.MuiTypography-root) {
+	margin-bottom: 12px;
+}

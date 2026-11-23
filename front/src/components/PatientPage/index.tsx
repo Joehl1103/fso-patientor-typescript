@@ -23,8 +23,8 @@ const paramsSchema = z.object({
 function RowAndCell({ left, right }: { left: string, right: string }) {
 
   return (
-    <TableRow style={{ width: 200 }} hover={true}>
-      <TableCell align='left' style={{ fontWeight: 'bold', width: 100 }} >{left}</TableCell>
+    <TableRow className={styles.patientRow} hover={true}>
+      <TableCell align='left' className={styles.patientLabelCell}>{left}</TableCell>
       <TableCell align='left'>{right}</TableCell>
     </TableRow>
   );
@@ -41,16 +41,13 @@ function EntryFormDisplay(
       <IconButton
         onClick={handleEntryFormCheck}
         size='small'
-        sx={{
-          cursor: 'pointer',
-          '&:hover': { color: 'primary.main' }
-        }}
+        className={styles.addEntryButton}
       >
         <AddIcon />
       </IconButton>
       <Typography
         variant="body2"
-        sx={{ marginTop: 1.6 }}
+        className={styles.addEntryLabel}
       >add entry</Typography>
     </div>
   );
@@ -97,7 +94,7 @@ function PatientPage() {
         </TableContainer>
       </div>
       <div>
-        <Typography variant='h5' sx={{ marginBottom: 1.5 }}>Entries</Typography>
+        <Typography variant='h5' className={styles.entriesHeading}>Entries</Typography>
         {entryFormVisible
           ? <EntryForm
             setEntryFormVisible={setEntryFormVisible}
