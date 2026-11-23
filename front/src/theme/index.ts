@@ -11,8 +11,8 @@ const colorTokens = {
     textPrimary: sky.sky12,
   },
   dark: {
-    primaryMain: bronze.bronze2,
-    primaryContrastText: "#003258",
+    primaryMain: skyDark.sky3,
+    primaryContrastText: bronze.bronze1,
     backgroundDefault: skyDark.sky1,
     textPrimary: bronze.bronze2,
   },
