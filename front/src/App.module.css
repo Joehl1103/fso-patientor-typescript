@@ -10,6 +10,4 @@
 
 .appDivider:global(.MuiDivider-root) {
 	margin: 1em 0;
-	border: none;
-	border-top: 1px solid black;
 }

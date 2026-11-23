@@ -1,5 +1,5 @@
 // React hooks
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 // External libraries
 import axios from "axios";
@@ -8,10 +8,9 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 // Material UI
 import { Button, Divider, Container, Typography, IconButton } from '@mui/material';
 import { CssBaseline } from "@mui/material";
-import { experimental_extendTheme as extendTheme,Experimental_CssVarsProvider,useColorScheme } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import LightModeIcon from '@mui/icons-material/LightMode';
 import ModeNightIcon from '@mui/icons-material/ModeNight';
-
 
 // Shared types and config
 import { apiBaseUrl } from "./constants";
@@ -23,6 +22,7 @@ import patientService from "./services/patients";
 // Local components
 import PatientListPage from "./components/PatientListPage";
 import PatientPage from "./components/PatientPage";
+import createAppTheme, { ColorMode } from "./theme";
 
 // Styles
 import styles from "./App.module.css";
@@ -30,11 +30,14 @@ import styles from "./App.module.css";
 const App = () => {
   const [patients, setPatients] = useState<PatientListItem[]>([]);
 	const [error,setError] = useState<string>("");
+  const [mode, setMode] = useState<ColorMode>(() => {
+    return localStorage.getItem("themeMode") === "dark" ? "dark" : "light";
+  });
+  const theme = useMemo(() => createAppTheme(mode), [mode]);
 
-// <CssVarsProvider theme={theme} modeStorageKey="themeMode">
-	const theme = extendTheme({
-			colorSchemes: { light: {}, dark: {} }
-	});
+  useEffect(() => {
+    localStorage.setItem("themeMode", mode);
+  }, [mode]);
 
   useEffect(() => {
 		axios.get<void>(`${apiBaseUrl}/ping`)
@@ -53,7 +56,6 @@ const App = () => {
   }, []);
 
 	function ColorModeToggle(){
-		const { mode, setMode } = useColorScheme();
 		return (
 			<IconButton onClick={() => setMode(mode === 'dark' ? 'light' : 'dark')} color="inherit">
 				{mode === 'dark' ? <LightModeIcon/> : <ModeNightIcon/>}
@@ -62,7 +64,7 @@ const App = () => {
 	}
 
   return (
-    <Experimental_CssVarsProvider theme={theme} modeStorageKey="themeMode">
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <div className="App">
         <Router>
@@ -82,7 +84,7 @@ const App = () => {
           </Container>
         </Router>
       </div>
-    </Experimental_CssVarsProvider>
+    </ThemeProvider>
   );
 };
 
