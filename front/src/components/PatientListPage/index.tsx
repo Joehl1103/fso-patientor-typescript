@@ -1,15 +1,25 @@
+// React hooks
 import { useState } from "react";
+
+// External libraries
+import { Link } from 'react-router-dom';
+
+// Material UI
 import { Box, Table, Button, TableHead, Typography, TableCell, TableRow, TableBody } from '@mui/material';
-import styles from "./patient-page.module.css";
 import CircularProgress from "@mui/material/CircularProgress";
+
+// Shared types
 import { PatientFormValues, PatientListItem } from "../../types";
-import AddPatientModal from "../AddPatientModal";
 
-import HealthRatingBar from "../HealthRatingBar";
-
+// API services
 import patientService from "../../services/patients";
 
-import { Link } from 'react-router-dom';
+// Local components
+import AddPatientModal from "../AddPatientModal";
+import HealthRatingBar from "../HealthRatingBar";
+
+// Styles
+import styles from "./patient-page.module.css";
 
 interface Props {
   patients: PatientListItem[]

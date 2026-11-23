@@ -1,7 +1,11 @@
+// Material UI
 import { Dialog, DialogTitle, DialogContent, Divider, Alert } from '@mui/material';
 
-import AddPatientForm from "./AddPatientForm";
+// Shared types
 import { PatientFormValues } from "../../types";
+
+// Local components
+import AddPatientForm from "./AddPatientForm";
 
 interface Props {
   modalOpen: boolean;

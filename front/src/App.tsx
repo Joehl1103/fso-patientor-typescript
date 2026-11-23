@@ -1,16 +1,27 @@
+// React hooks
 import { useState, useEffect } from "react";
+
+// External libraries
 import axios from "axios";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+
+// Material UI
 import { Button, Divider, Container, Typography } from '@mui/material';
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+
+// Shared types and config
 import { apiBaseUrl } from "./constants";
 import { PatientListItem } from "./types";
 
+// API services
 import patientService from "./services/patients";
-import PatientListPage from "./components/PatientListPage";
 
+// Local components
+import PatientListPage from "./components/PatientListPage";
 import PatientPage from "./components/PatientPage";
+
+// Styles
 import styles from "./App.module.css";
 
 const App = () => {

@@ -1,4 +1,7 @@
+// Material UI
 import { Typography, Checkbox, Box } from '@mui/material';
+
+// Styles
 import styles from "./Header.module.css";
 function Header({ setEntryFormVisible }: { setEntryFormVisible: React.Dispatch<React.SetStateAction<boolean>> }) {
   return (

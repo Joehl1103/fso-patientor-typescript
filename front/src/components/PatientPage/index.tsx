@@ -1,15 +1,27 @@
+// React hooks
 import { useState, useEffect } from 'react';
-import { Patient, Entry } from "../../types.ts";
+
+// External libraries
 import { useParams } from "react-router-dom";
 import * as z from 'zod';
-import services from '../../services/patients';
-import { Typography, TableContainer, Table, TableBody, TableRow, TableCell, IconButton } from '@mui/material';
-import MaleIcon from '@mui/icons-material/Male';
-import FemaleIcon from '@mui/icons-material/Female';
+
+// Material UI
+import { IconButton, IconProps, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import { IconProps } from '@mui/material';
+import FemaleIcon from '@mui/icons-material/Female';
+import MaleIcon from '@mui/icons-material/Male';
+
+// Shared types
+import { Patient, Entry } from "../../types.ts";
+
+// API services
+import services from '../../services/patients';
+
+// Local components
 import EntryDisplay from './Entries/EntryDisplay.tsx';
 import EntryForm from './Entries/EntryForm/index.tsx';
+
+// Styles
 import styles from "./patient-page.module.css";
 
 interface IParams {

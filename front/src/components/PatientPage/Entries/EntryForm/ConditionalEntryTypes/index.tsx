@@ -1,9 +1,18 @@
+// External libraries
+import dayjs from 'dayjs';
+
+// Material UI
 import { Box, InputLabel, Select, MenuItem, TextField } from '@mui/material';
-import { ConditionalData, EntryType, HealthCheckRating, HealthCheckRatingKeys } from '../../../../../types';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import dayjs from 'dayjs';
+
+// Shared types
+import { ConditionalData, EntryType, HealthCheckRating, HealthCheckRatingKeys } from '../../../../../types';
+
+// Helpers
 import { convertDateToString } from '../utils';
+
+// Styles
 import styles from "./conditional-entry-types.module.css";
 
 interface Props {

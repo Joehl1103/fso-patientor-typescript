@@ -1,9 +1,14 @@
+// React hooks and types
 import { useState, SyntheticEvent } from "react";
 
+// Material UI
 import { TextField, InputLabel, MenuItem, Select, Grid, Button, SelectChangeEvent } from '@mui/material';
-import styles from "./add-patient-form.module.css";
 
+// Shared types
 import { PatientFormValues, Gender } from "../../types";
+
+// Styles
+import styles from "./add-patient-form.module.css";
 
 interface Props {
   onCancel: () => void;

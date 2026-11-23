@@ -1,5 +1,10 @@
-import { BaseEntryFormTypes, EntryType } from "../../../../types";
+// Material UI
 import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material';
+
+// Shared types
+import { BaseEntryFormTypes, EntryType } from "../../../../types";
+
+// Styles
 import styles from "./EntryTypeSelect.module.css";
 
 interface Props {

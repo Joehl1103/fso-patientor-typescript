@@ -1,7 +1,14 @@
+// React hooks
 import { useState, useEffect } from 'react';
+
+// Material UI
 import { Box, InputLabel, Select, Button, MenuItem } from '@mui/material';
-import diagnosesService from '../../../../../services/diagnoses';
+
+// Shared types
 import { BaseEntryFormTypes, Diagnosis } from '../../../../../types';
+
+// API services and helpers
+import diagnosesService from '../../../../../services/diagnoses';
 import { isDiagnosisCode } from '../utils';
 
 function DiagnosisCodeDisplay({ diagnosisCodes }: { diagnosisCodes: Array<Diagnosis['code']> }) {

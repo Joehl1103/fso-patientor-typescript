@@ -1,11 +1,19 @@
+// External libraries
+import dayjs from 'dayjs';
+
+// Material UI
 import { InputLabel, TextField } from '@mui/material';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+
+// Shared types
 import { BaseEntryFormTypes } from '../../../../../types';
+
+// Helpers
+import { isDayjsObject, convertDateToString } from '../utils';
+
+// Local components
 import DiagnosticCodes from './DiagnosticCodes';
-import { isDayjsObject } from '../utils';
-import { convertDateToString } from '../utils';
-import dayjs from 'dayjs';
 
 interface Props {
   baseEntryFormData: BaseEntryFormTypes,

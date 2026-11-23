@@ -1,5 +1,13 @@
-import { Box, Button } from "@mui/material";
+// React hooks
 import { useState } from 'react';
+
+// External libraries
+import * as z from 'zod';
+
+// Material UI
+import { Box, Button } from "@mui/material";
+
+// Shared types
 import {
   Entry,
   EntryType,
@@ -7,15 +15,18 @@ import {
   NotificationType,
   ConditionalData
 } from "../../../../types";
+
+// API services and helpers
+import entryService from '../../../../services/entries.ts';
+import { entryTypeValidator } from "../../../../utilities.ts";
+import { getHealthCheckRating } from "./utils.tsx";
+
+// Local components
 import EntryTypeSelect from "./EntryTypeSelect";
 import Header from './Header';
 import BaseEntryForm from "./BaseEntryForm";
 import Notification from './Notification';
-import entryService from '../../../../services/entries.ts';
-import { entryTypeValidator } from "../../../../utilities.ts";
-import * as z from 'zod';
 import ConditionalEntryTypes from "./ConditionalEntryTypes/index.tsx";
-import { getHealthCheckRating } from "./utils.tsx";
 
 function EntryForm(
   { setEntryFormVisible,

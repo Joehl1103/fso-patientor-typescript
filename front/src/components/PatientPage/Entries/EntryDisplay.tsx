@@ -1,15 +1,23 @@
-import { Diagnosis, Entry, EntryType, SickLeave, HealthCheckRating } from "../../../types";
+// React hooks and types
 import { ComponentType, useEffect, useState } from "react";
-import { SvgIconProps, Divider } from "@mui/material";
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+
+// Material UI
+import { Box, Divider, SvgIconProps, Typography } from "@mui/material";
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
-import EngineeringIcon from '@mui/icons-material/Engineering';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import DeviceThermostatIcon from '@mui/icons-material/DeviceThermostat';
+import EngineeringIcon from '@mui/icons-material/Engineering';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { Box, Typography } from "@mui/material";
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+
+// Shared types
+import { Diagnosis, Entry, EntryType, HealthCheckRating, SickLeave } from "../../../types";
+
+// API services and helpers
 import diagnosesService from "../../../services/diagnoses";
 import { exhaustiveTypeGuard } from "../../../utilities";
+
+// Styles
 import styles from "./EntryDisplay.module.css";
 
 // eslint-disable-next-line react-refresh/only-export-components

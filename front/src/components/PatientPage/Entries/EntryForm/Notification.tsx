@@ -1,5 +1,10 @@
+// Material UI
 import { Box, Typography } from '@mui/material';
+
+// Shared types
 import { NotificationType } from '../../../../types.ts';
+
+// Styles
 import styles from "./Notification.module.css";
 
 interface Props {
