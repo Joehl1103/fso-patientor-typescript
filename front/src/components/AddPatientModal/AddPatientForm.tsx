@@ -54,8 +54,8 @@ const AddPatientForm = ({ onCancel, onSubmit }: Props) => {
   };
 
   return (
-    <div className={styles.addPatientFormMain}>
-      <form  onSubmit={addPatient}>
+    <div>
+      <form className={styles.addPatientFormMain} onSubmit={addPatient}>
         <TextField
           label="Name"
           fullWidth

@@ -1,5 +1,11 @@
 @import "@radix-ui/colors/sky";
 
+.addPatientFormMain {
+	display:flex;
+	flex-direction: column;
+	gap: 0.5em;
+}
+
 .genderLabel:global(.MuiFormLabel-root) {
 	margin-top: 20px;
 }

@@ -2,7 +2,7 @@
 
 .dialog:global(.MuiPaper-root){
 	background-color: var(--add-patient-modal-background);
-	box-shadow:2px 2px 7px var(--modal-shadow);
+	box-shadow:2px 2px 7px var(--sky-12);
 
 }
 
