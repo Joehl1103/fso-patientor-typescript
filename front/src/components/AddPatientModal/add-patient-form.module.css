@@ -24,5 +24,5 @@
 }
 
 .apfBtnCancel:global(.MuiButton-root):hover {
-	background-color: var(--cancel-button-bg);
+	background-color: var(--cancel-button-bg-hover);
 }

@@ -6,21 +6,25 @@ export type ColorMode = "light" | "dark";
 const colorTokens = {
   light: {
     primaryMain: tomato.tomato1,
+		buttonHover: tomato.tomato2,
     primaryContrastText: skyDark.sky1,
     backgroundDefault: amber.amber1,
     textPrimary: sky.sky12,
 		cancelBtnBg: skyDark.sky4,
+		cancelBtnBgHover: skyDark.sky5,
 		modalBackground: sky.sky1,
-		modalShadow: skyDark.sky12
+		modalShadow: skyDark.sky12,
   },
   dark: {
     primaryMain: skyDark.sky3,
+		buttonHover: skyDark.sky4,
     primaryContrastText: bronze.bronze1,
     backgroundDefault: skyDark.sky1,
     textPrimary: bronze.bronze2,
 		cancelBtnBg: tomatoDark.tomato3,
+		cancelBtnBgHover: tomatoDark.tomato4,
 		modalBackground: blueDark.blue1,
-		modalShadow: skyDark.sky4
+		modalShadow: skyDark.sky4,
   },
 } as const;
 
@@ -46,12 +50,22 @@ const createAppTheme = (mode: ColorMode) => {
 					styleOverrides: {
 						body: {
 							"--cancel-button-bg": tokens.cancelBtnBg,
+							"--cancel-button-bg-hover": tokens.cancelBtnBgHover,
 							"--add-patient-modal-background": tokens.modalBackground,
 							"--modal-shadow": tokens.modalShadow
 						}
 					}	
+				},
+			MuiButton: {
+				styleOverrides: {
+					root: {
+						"&:hover": {
+							backgroundColor: tokens.buttonHover,
+						}
+					}
 				}
 			}
+		}
   });
 };
 
