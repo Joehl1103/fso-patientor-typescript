@@ -1,5 +1,6 @@
 // Material UI
 import { Dialog, DialogTitle, DialogContent, Divider, Alert } from '@mui/material';
+import styles from "./AddPatientModal.module.css";
 
 // Shared types
 import { PatientFormValues } from "../../types";
@@ -15,7 +16,12 @@ interface Props {
 }
 
 const AddPatientModal = ({ modalOpen, onClose, onSubmit, error }: Props) => (
-  <Dialog fullWidth={true} open={modalOpen} onClose={() => onClose()}>
+  <Dialog 
+		PaperProps={{ className: styles.dialog }}
+		fullWidth={true} 
+		open={modalOpen} 
+		onClose={() => onClose()}
+	>
     <DialogTitle>Add a new patient</DialogTitle>
     <Divider />
     <DialogContent>

@@ -1,0 +1,8 @@
+@import "@radix-ui/colors/sky-dark.css";
+
+.dialog:global(.MuiPaper-root){
+	background-color: var(--add-patient-modal-background);
+	box-shadow:2px 2px 7px var(--modal-shadow);
+
+}
+

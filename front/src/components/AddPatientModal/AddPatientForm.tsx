@@ -54,8 +54,8 @@ const AddPatientForm = ({ onCancel, onSubmit }: Props) => {
   };
 
   return (
-    <div>
-      <form onSubmit={addPatient}>
+    <div className={styles.addPatientFormMain}>
+      <form  onSubmit={addPatient}>
         <TextField
           label="Name"
           fullWidth
@@ -102,7 +102,7 @@ const AddPatientForm = ({ onCancel, onSubmit }: Props) => {
         <Grid className={styles.buttonRow} container>
             <Button
 							className={styles.apfBtnCancel}
-              color="secondary"
+              color="inherit"
               variant="contained"
               type="button"
               onClick={onCancel}
