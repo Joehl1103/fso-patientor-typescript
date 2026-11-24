@@ -1,5 +1,6 @@
 // Material UI
-import { Typography, Checkbox, Box } from '@mui/material';
+import { Typography,Box } from '@mui/material';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 // Styles
 import styles from "./Header.module.css";
@@ -12,10 +13,10 @@ function Header({ setEntryFormVisible }: { setEntryFormVisible: React.Dispatch<R
           variant='body2'
           className={styles.closeFormLabel}
         >close form</Typography>
-        <Checkbox
-          size="small"
-          onChange={() => setEntryFormVisible(false)}
-          className={styles.closeFormCheckbox}
+        <CancelIcon
+					className={styles.cancelIcon}
+          fontSize="small"
+          onClick={() => setEntryFormVisible(false)}
         />
       </Box>
     </Box>

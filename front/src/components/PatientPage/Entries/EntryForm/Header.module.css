@@ -1,19 +1,15 @@
 .headerRow {
 	display: flex;
-	flex-direction: row;
-	gap: 5px;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .closeFormRow {
 	display: flex;
-	flex-direction: row;
+	align-items: center;
+	gap: 4px;
 }
 
-.closeFormLabel:global(.MuiTypography-root) {
-	margin-left: 8px;
-	margin-top: 4.8px;
-}
-
-.closeFormCheckbox:global(.MuiCheckbox-root) {
-	padding-top: 0;
+.cancelIcon:global(.MuiSvgIcon-root):hover {
+	cursor: pointer;
 }
