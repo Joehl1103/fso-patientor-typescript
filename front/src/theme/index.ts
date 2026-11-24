@@ -33,8 +33,16 @@ const createAppTheme = (mode: ColorMode) => {
       },
       text: {
         primary: tokens.textPrimary,
-      }
+      },
     },
+		components: {
+				MuiCssBaseline: {
+					styleOverrides: {
+						body: {
+						}
+					}	
+				}
+			}
   });
 };
 

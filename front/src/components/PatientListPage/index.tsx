@@ -86,7 +86,7 @@ const PatientListPage = ({ patients, setPatients, error: errorFromApp }: Props) 
 								<TableCell>
 									<span className={styles.patientName}>
 										{patient.name}
-										<Link to={`/${patient.id}`}><LaunchIcon fontSize="small" /></Link>
+										<Link className={styles.nameLink} to={`/${patient.id}`}><LaunchIcon fontSize="small" /></Link>
 									</span>
 								</TableCell>
 								<TableCell>{patient.gender}</TableCell>
