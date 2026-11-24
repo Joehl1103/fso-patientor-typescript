@@ -102,7 +102,6 @@ const AddPatientForm = ({ onCancel, onSubmit }: Props) => {
         <Grid className={styles.buttonRow} container>
             <Button
 							className={styles.apfBtnCancel}
-              color="inherit"
               variant="contained"
               type="button"
               onClick={onCancel}
