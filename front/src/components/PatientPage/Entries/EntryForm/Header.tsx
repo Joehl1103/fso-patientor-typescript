@@ -1,8 +1,8 @@
 // Material UI
-import { Typography,Box } from '@mui/material';
-import CancelIcon from '@mui/icons-material/Cancel';
-import OpenInFullIcon from '@mui/icons-material/OpenInFull';
-
+import { Typography,Box,Button } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faPlus,faX} from "@fortawesome/free-solid-svg-icons";
+import { library, IconProp, IconDefinition } from '@fortawesome/fontawesome-svg-core'
 // Styles
 import styles from "./Header.module.css";
 
@@ -11,39 +11,21 @@ interface Props {
 	setEntryFormVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-
-function Cancel({ setEntryFormVisible }: Omit<Props, "entryFormVisible">) {
-	return (
-		<div>
-			<Typography
-				variant='body2'
-				className={styles.closeFormLabel}
-			>
-				close form
-			</Typography>
-			<CancelIcon
-					className={styles.cancelIcon}
-					fontSize="small"
-					onClick={() => setEntryFormVisible(false)}
-			/>
-		</div>
-	);
+interface ToggleFormButtonProps {
+	setEntryFormVisible: React.Dispatch<React.SetStateAction<boolean>>;
+	setEntryBool: boolean;
+	iconName: IconDefinition;
+	text: string;
 }
 
-function Add({ setEntryFormVisible }: Omit<Props, "entryFormVisible">){
+function ToggleFormButton({ setEntryFormVisible,setEntryBool,iconName, text }: ToggleFormButtonProps ) {
 	return (
 		<div>
-			<Typography
-        variant="body2"
-        className={styles.addEntryLabel}
-      >
-				Open Form to add entry
-			</Typography>
-      <OpenInFullIcon 
-				// className={}
-				fontSize="small"
-				onClick={() => setEntryFormVisible(true)}
-			/>
+			<Button 
+				onClick={() => setEntryFormVisible(setEntryBool)} 
+				style={{backgroundColor: "white"}}>
+				<FontAwesomeIcon icon={iconName} />&nbsp;{`${text}`}
+			</Button>
 		</div>
 	);
 }
@@ -53,7 +35,21 @@ function Header({ entryFormVisible, setEntryFormVisible }: Props) {
     <Box className={styles.headerRow}>
       <Typography variant='body1'>Add Entry</Typography>
       <Box className={styles.closeFormRow}>
-				{entryFormVisible ? <Cancel setEntryFormVisible={setEntryFormVisible}/> : <Add setEntryFormVisible={setEntryFormVisible}/>}
+				{
+				entryFormVisible ? 
+				<ToggleFormButton 
+					setEntryFormVisible={setEntryFormVisible}
+					setEntryBool={false}
+					iconName={faX}
+					text="Close Form"
+					/> : 
+				<ToggleFormButton 
+					setEntryFormVisible={setEntryFormVisible}
+					setEntryBool={true}
+					iconName={faPlus}
+					text="Add Entry"
+					/>
+				}
       </Box>
     </Box>
   );
