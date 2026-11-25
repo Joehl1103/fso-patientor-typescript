@@ -22,6 +22,10 @@ import HealthRatingBar from "../HealthRatingBar";
 // Styles
 import styles from "./patient-page.module.css";
 
+//Font Awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+
 interface Props {
   patients: PatientListItem[]
   setPatients: React.Dispatch<React.SetStateAction<PatientListItem[]>>
@@ -86,7 +90,7 @@ const PatientListPage = ({ patients, setPatients, error: errorFromApp }: Props) 
 								<TableCell className={styles.patientName}>
 									<span >
 										{patient.name}
-										<Link className={styles.nameLink} to={`/${patient.id}`}><LaunchIcon fontSize="small" /></Link>
+										<Link to={`/${patient.id}`}>{" "}<FontAwesomeIcon icon={faArrowUpRightFromSquare} className={styles.nameLink}/></Link>
 									</span>
 								</TableCell>
 								<TableCell className={styles.secondaryColumn}>{patient.gender}</TableCell>
@@ -112,4 +116,5 @@ const PatientListPage = ({ patients, setPatients, error: errorFromApp }: Props) 
 }};
 
 export default PatientListPage;
+
 

@@ -27,12 +27,13 @@
 	color:inherit;
 }
 
-.nameLink :global(.MuiSvgIcon-root) {
+.nameLink {
 	transition: transform 0.2s ease;
 }
 
-.nameLink :global(.MuiSvgIcon-root):hover {
+.nameLink:hover {
 	transform: scale(1.1);
+	color: var(--main-health-rating-icon);
 }
 
 .ratingCell {
