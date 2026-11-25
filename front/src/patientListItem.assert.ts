@@ -5,5 +5,6 @@ export const patientListItemAssertion: PatientListItem = {
   name: "Assert Example",
   dateOfBirth: "1990-01-01",
   gender: "male",
-  occupation: "Example Occupation"
+  occupation: "Example Occupation",
+  rating: 1
 };

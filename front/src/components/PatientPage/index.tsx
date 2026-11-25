@@ -62,11 +62,6 @@ function PatientPage() {
     return <div>No patient to display...</div>;
   }
 
-  function handleEntryFormCheck(event: React.SyntheticEvent) {
-    event.preventDefault();
-    setEntryFormVisible(true);
-  }
-
   const iconSize: IconProps['fontSize'] = 'large';
   return (
     <div>
@@ -93,7 +88,6 @@ function PatientPage() {
 				{/* Entry Form */}
         {entryFormVisible
           ? <EntryForm
-            setEntryFormVisible={setEntryFormVisible}
             patientId={params.id}
             setEntries={setEntries}
           />

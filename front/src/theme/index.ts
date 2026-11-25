@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material/styles";
-import { slate, bronze, sky,skyDark,tomato,tomatoDark,amber, blueDark,blue,grass,grassDark,red,redDark } from "@radix-ui/colors";
+import { slate, bronze, sky,skyDark,tomato,tomatoDark,amber, blueDark,blue,grass,grassDark,redDark } from "@radix-ui/colors";
 
 export type ColorMode = "light" | "dark";
 

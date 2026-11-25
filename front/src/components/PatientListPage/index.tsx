@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 // Material UI
 import { Box, Table, Button, TableHead, Typography, TableCell, TableRow, TableBody } from '@mui/material';
 import CircularProgress from "@mui/material/CircularProgress";
-import LaunchIcon from '@mui/icons-material/Launch';
 
 // Shared types
 import { PatientFormValues, PatientListItem } from "../../types";

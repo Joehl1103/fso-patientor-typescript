@@ -6,7 +6,7 @@ import axios from "axios";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 
 // Material UI
-import { Box, Button, Divider, Container, Typography, IconButton } from '@mui/material';
+import { Box, Button, Container, Typography, IconButton } from '@mui/material';
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import LightModeIcon from '@mui/icons-material/LightMode';

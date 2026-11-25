@@ -1,6 +1,5 @@
 // Material UI
 import { Rating } from '@mui/material';
-import { Favorite } from '@mui/icons-material';
 
 // Styles
 import styles from "./health-rating-bar.module.css";
