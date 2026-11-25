@@ -23,17 +23,12 @@ import { getHealthCheckRating } from "./utils.tsx";
 
 // Local components
 import EntryTypeSelect from "./EntryTypeSelect";
-import Header from './Header';
 import BaseEntryForm from "./BaseEntryForm";
 import Notification from './Notification';
 import ConditionalEntryTypes from "./ConditionalEntryTypes/index.tsx";
 
-function EntryForm(
-  { setEntryFormVisible,
-    patientId, setEntries
-  }:
+function EntryForm({ patientId, setEntries }:
     {
-      setEntryFormVisible: React.Dispatch<React.SetStateAction<boolean>>,
       patientId: string,
       setEntries: React.Dispatch<React.SetStateAction<Entry[]>>
     }) {

@@ -63,3 +63,16 @@
 .entryBlockInner {
 	margin-bottom: 20px;
 }
+
+.occupationalChip:global(.MuiChip-root) {
+	background-color: var(--occupational-chip);
+}
+
+.hospitalChip:global(.MuiChip-root) {
+	background-color: var(--hospital-chip);
+}
+
+
+.healthcheckChip:global(.MuiChip-root) {
+	background-color: var(--healthcheck-chip);
+}

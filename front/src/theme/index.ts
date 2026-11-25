@@ -1,10 +1,23 @@
-import { createTheme,alpha } from "@mui/material/styles";
-import { bronze, sky,skyDark,tomato,tomatoDark,amber, blueDark,blue } from "@radix-ui/colors";
+import { createTheme } from "@mui/material/styles";
+import { bronze, sky,skyDark,tomato,tomatoDark,amber, blueDark,blue,grass,grassDark } from "@radix-ui/colors";
 
 export type ColorMode = "light" | "dark";
 
-const colorTokens = {
-  light: {
+// ColorToken can be either a string or an object where each key is a string and the value is also a string
+type ColorToken = string | { [key: string]: string };
+
+type Same<T> = { [K in keyof T]: T[K] };
+// extends: T must at least have the type of <Record<string,ColorToken>>, where
+// light or dark are the string and the object is the ColorToken
+function colorModes<T extends Record<string,ColorToken>>(
+	light: Same<T>,
+	dark: Same<T>
+) {
+	return { light, dark };
+}
+
+const colorTokens = colorModes(
+	{
     primaryMain: tomato.tomato1,
 		buttonHover: tomato.tomato2,
     primaryContrastText: skyDark.sky1,
@@ -14,8 +27,13 @@ const colorTokens = {
 		cancelBtnBgHover: skyDark.sky5,
 		modalBackground: sky.sky1,
 		modalShadow: skyDark.sky12,
-  },
-  dark: {
+		chips: {
+			hospital: tomato.tomato3,
+			occupational: blue.blue3,
+			health: grass.grass3
+		},
+	},
+	{
     primaryMain: skyDark.sky3,
 		buttonHover: skyDark.sky4,
     primaryContrastText: bronze.bronze1,
@@ -25,8 +43,13 @@ const colorTokens = {
 		cancelBtnBgHover: tomatoDark.tomato4,
 		modalBackground: blueDark.blue1,
 		modalShadow: skyDark.sky4,
-  },
-} as const;
+		chips: {
+			hospital: tomatoDark.tomato3,
+			occupational: blueDark.blue3,
+			health: grassDark.grass3
+		},
+	},
+);
 
 const createAppTheme = (mode: ColorMode) => {
   const tokens = colorTokens[mode];
@@ -52,8 +75,12 @@ const createAppTheme = (mode: ColorMode) => {
 							"--cancel-button-bg": tokens.cancelBtnBg,
 							"--cancel-button-bg-hover": tokens.cancelBtnBgHover,
 							"--add-patient-modal-background": tokens.modalBackground,
-							"--modal-shadow": tokens.modalShadow
+							"--modal-shadow": tokens.modalShadow,
+							"--occupational-chip": tokens.chips.occupational,
+							"--hospital-chip": tokens.chips.hospital,
+							"--healthcheck-chip": tokens.chips.health
 						}
+
 					}	
 				},
 			MuiButton: {

@@ -2,8 +2,13 @@
 import { useEffect, useState } from "react";
 
 // Material UI
-import {Divider,Typography, Card } from "@mui/material";
+import {Divider,Typography, Card, Chip } from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
+
+// Font Awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHospital, faHelmetSafety, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
 // Shared types
 import { Diagnosis, Entry, EntryType, HealthCheckRating, SickLeave } from "../../../../types";
@@ -110,6 +115,20 @@ function renderSickLeave(sickLeave: SickLeave) {
     }
   }
 
+function renderEntryIcon(entry: Entry){
+	switch(entry.type){
+		case EntryType.HOSPITAL:
+			return <Chip icon={<FontAwesomeIcon icon={faHospital}/>} label="Hospital" size="medium" className={styles.hospitalChip}/>;
+		case EntryType.OCCUPATIONAL:
+			return <Chip icon={<FontAwesomeIcon icon={faHelmetSafety}/>} label="Occupational" size="medium" className={styles.occupationalChip}/>;
+		case EntryType.HEALTHCHECK:
+			return <Chip icon={<FontAwesomeIcon icon={faHeart}/>} label="Health check" size="medium" className={styles.healthcheckChip}/>;
+		default:
+			exhaustiveTypeGuard(entry);
+		
+	}
+}
+
 // Main
 function EntryDisplay({ entry }: { entry: Entry }) {
   const [diagnoses, setDiagnoses] = useState<Diagnosis[] | []>([]);
@@ -130,6 +149,7 @@ function EntryDisplay({ entry }: { entry: Entry }) {
 					{/*Base*/}
           <div>
 						{/*Type Icon*/}
+						{renderEntryIcon(entry)}
 						<p>{entry.date}</p>
 						<div className={styles.baseEntryDisplay}>
 							<p>{entry.description}</p>

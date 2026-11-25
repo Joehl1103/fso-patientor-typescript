@@ -1,8 +1,8 @@
 // Material UI
 import { Typography,Box,Button } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faPlus,faX} from "@fortawesome/free-solid-svg-icons";
-import { library, IconProp, IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import { faPlus, faX } from "@fortawesome/free-solid-svg-icons";
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 // Styles
 import styles from "./Header.module.css";
 
