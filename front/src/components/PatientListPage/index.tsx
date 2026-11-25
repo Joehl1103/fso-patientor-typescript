@@ -108,9 +108,11 @@ const PatientListPage = ({ patients, setPatients, error: errorFromApp }: Props) 
 					error={error}
 					onClose={closeModal}
 				/>
-				<Button variant="contained" onClick={() => openModal()}>
-					Add New Patient
-				</Button>
+				<Box className={styles.buttonDiv}>
+					<Button variant="contained" onClick={() => openModal()}>
+						Add New Patient
+					</Button>
+				</Box>
 			</div >
 		);
 }};
