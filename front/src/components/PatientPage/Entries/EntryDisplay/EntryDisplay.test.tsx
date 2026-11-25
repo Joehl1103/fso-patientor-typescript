@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert';
-import { fetchDiagnoses } from './EntryDisplay';
+import { fetchDiagnoses } from './index.tsx';
 import { Diagnosis } from '../../../../types';
 
 test('returns diagnoses from codes', async () => {

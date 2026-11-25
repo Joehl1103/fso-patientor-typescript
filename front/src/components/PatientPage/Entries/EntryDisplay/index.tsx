@@ -1,13 +1,9 @@
 // React hooks and types
-import { ComponentType, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 // Material UI
-import { Box, Divider, SvgIconProps, Typography, Card } from "@mui/material";
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import DeviceThermostatIcon from '@mui/icons-material/DeviceThermostat';
-import EngineeringIcon from '@mui/icons-material/Engineering';
+import {Divider,Typography, Card } from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 
 // Shared types
 import { Diagnosis, Entry, EntryType, HealthCheckRating, SickLeave } from "../../../../types";
@@ -29,72 +25,29 @@ export async function fetchDiagnoses(codes: string[]) {
 function DiagnosticCodes({ diagnoses }: { diagnoses: Diagnosis[] }) {
   return (
     <div>
-      <ItemDivWithIcon
-        icon={ChevronRightIcon}
-        text={"Diagnostic codes:"} />
-      <Box className={styles.diagnosisListBox} >
-        <ul className={styles.diagnosisList}>
+			<p>Diagnostic codes:</p>
+				<ul className={styles.diagnosisList}>
           {diagnoses.map((d) => (
             <li key={d.code}><Typography variant="body2">{`${d.code}: ${d.name}.`}</Typography></li>
           ))}
         </ul>
-      </Box>
     </div >
   );
 }
 
-function ItemDivWithIcon(
-  { icon: Icon,
-    text,
-    typeIcon: _TypeIcon,
-    healthIconObject }:
-    {
-      icon: ComponentType<SvgIconProps>,
-      text: string,
-      typeIcon?: ComponentType<SvgIconProps>,
-      healthIconObject?: {
-        icon: ComponentType<SvgIconProps>,
-        iconClassName: string
-      }
-    }
-) {
-  return (
-    <div className={styles.itemDivWithIcon}>
-      <Icon fontSize="small" />
-      <Typography variant="body2" className={styles.iconRowText}>{text}</Typography>
-      {healthIconObject ? <healthIconObject.icon className={healthIconObject.iconClassName} /> : null}
-    </div>
-  );
-}
-
-function setTypeIcon(type: EntryType) {
-  switch (type) {
-    case EntryType.HEALTHCHECK:
-      return LocalHospitalIcon;
-    case EntryType.OCCUPATIONAL:
-      return EngineeringIcon;
-    case EntryType.HOSPITAL:
-      return DeviceThermostatIcon;
-    default:
-      exhaustiveTypeGuard(type);
-  }
-}
-
-function BaseEntryDisplay({ entry }: { entry: Entry }) {
-  const { type, date, description, specialist } = entry;
-  const Icon = setTypeIcon(type);
-  return (
-    <div>
-      <p >
-				{date}
-      </p>
-      <div className={styles.baseEntryDisplay}>
-				<p>{description}</p>
-				<p>Specialist: {specialist}</p>
-      </div>
-    </div >
-  );
-}
+//TODO: keeping this so that I can set the icons dynamically
+// function setTypeIcon(type: EntryType) {
+//   switch (type) {
+//     case EntryType.HEALTHCHECK:
+//       return LocalHospitalIcon;
+//     case EntryType.OCCUPATIONAL:
+//       return EngineeringIcon;
+//     case EntryType.HOSPITAL:
+//       return DeviceThermostatIcon;
+//     default:
+//       exhaustiveTypeGuard(type);
+//   }
+// }
 
 function setHealthIconClass(rating: HealthCheckRating) {
     switch (rating) {
@@ -114,7 +67,7 @@ function setHealthIconClass(rating: HealthCheckRating) {
 function renderSickLeave(sickLeave: SickLeave) {
     return (
       <div>
-        <ItemDivWithIcon icon={ChevronRightIcon} text={"Sick Leave:"} />
+				<p>Sick Leave:</p>
         <ul className={styles.sickLeaveUL}>
           <li><Typography variant="body2"> Start: {sickLeave.startDate}</Typography></li>
           <li><Typography variant="body2">End: {sickLeave.endDate}</Typography></li>
@@ -130,11 +83,7 @@ function renderSickLeave(sickLeave: SickLeave) {
       case EntryType.HOSPITAL:
         return (
           <div className={styles.hospitalType} >
-            <ItemDivWithIcon
-              icon={ChevronRightIcon}
-              text={`Discharge notes: discharged on ${entry.discharge.date}: ${entry.discharge.criteria}`}
-            />
-            <p className={styles.dischargeNote}><i></i></p>
+            <p className={styles.dischargeNote}><i>Discharge notes: discharged on {entry.discharge.date}: {entry.discharge.criteria}</i></p>
           </div>
         );
       case EntryType.HEALTHCHECK:
@@ -144,21 +93,15 @@ function renderSickLeave(sickLeave: SickLeave) {
         };
         return (
           <div>
-            <ItemDivWithIcon
-              icon={ChevronRightIcon}
-              text={`Health rating:`}
-              healthIconObject={healthIconObject}
-            />
+						<p>Health rating:</p>
+						{healthIconObject ? <healthIconObject.icon className={healthIconObject.iconClassName} /> : null}
           </div>
         );
       case EntryType.OCCUPATIONAL:
         return (
           <div>
             <p>Occupational Information</p>
-            <ItemDivWithIcon
-              icon={ChevronRightIcon}
-              text={`Employer name: ${entry.employerName}`}
-            />
+						<p>Employer name: {entry.employerName}</p>
             {entry.sickLeave ? renderSickLeave(entry.sickLeave) : null}
           </div >
         );
@@ -180,15 +123,22 @@ function EntryDisplay({ entry }: { entry: Entry }) {
     }
   }, [diagnosticCodes]);
 
-  
-
   return (
     <div>
       <div className={styles.entryBlock}>
         <Card className={styles.entryBlockInner}>
-          <BaseEntryDisplay entry={entry} />
+					{/*Base*/}
+          <div>
+						{/*Type Icon*/}
+						<p>{entry.date}</p>
+						<div className={styles.baseEntryDisplay}>
+							<p>{entry.description}</p>
+							<p>Specialist: {entry.specialist}</p>
+						</div>
+					</div >
+					{/*Diagnostic Codes*/}
           {diagnoses.length > 0 ? <DiagnosticCodes diagnoses={diagnoses} /> : null}
-					<Divider/>
+					{/*Variability by type*/}
           <div>{renderTypes(entry)}</div>
         </Card>
       </div>
