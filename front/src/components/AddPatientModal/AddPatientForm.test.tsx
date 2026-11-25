@@ -31,4 +31,6 @@ test("submits the entered patient", () => {
     gender: Gender.Male,
   });
   expect(onCancel).not.toHaveBeenCalled();
+
+
 });

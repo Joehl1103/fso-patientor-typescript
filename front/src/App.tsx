@@ -22,7 +22,7 @@ import patientService from "./services/patients";
 // Local components
 import PatientListPage from "./components/PatientListPage";
 import PatientPage from "./components/PatientPage";
-import createAppTheme, { ColorMode } from "./theme";
+import createAppTheme, { type ColorMode } from "./theme";
 
 // Styles
 import styles from "./App.module.css";
@@ -59,7 +59,7 @@ const App = () => {
 			});
   }, []);
 
-	function handleSetMode(){
+	function handleSetMode(): void {
 		const newMode =  mode === 'dark' ? 'light' : 'dark';
 		setMode(newMode);
 	}

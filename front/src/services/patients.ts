@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Patient, PatientFormValues, PatientListItem } from "../types";
+import { Patient, PatientFormValues, PatientListItem, Gender } from "../types";
 
 import { apiBaseUrl } from "../constants";
 
@@ -16,7 +16,31 @@ const getById = async (id: string) => {
   return data;
 };
 
-const create = async (object: PatientFormValues) => {
+export function validateNewPatient(object: PatientFormValues): PatientFormValues {
+	const errors: string[] = [];
+	const dobCorrect: boolean = /^[\d]{4}-[\d]{2}-[\d]{2}$/.test(object.dateOfBirth);
+	if(!dobCorrect){
+		errors.push("Date of Birth must be in the following format: `DD-MM-YYYY`.");
+	}
+	const ssnCorrect: boolean = /^[\d]{3}-[\d]{3}-[\d]{4}$/.test(object.ssn);
+	if(!ssnCorrect){
+		errors.push("SSN must be in the following format: `XXX-XXX-XXXX`.");
+	}
+	const genderLC: string = object.gender.toLowerCase();
+	const isMaleOrFemale: boolean = ["male","female"].includes(genderLC);
+	if(!isMaleOrFemale){
+		errors.push("Gender must be either `Male` or `Female`.");
+	}
+	if(errors.length > 0){
+		throw new Error(errors.join(" "));
+	}
+	return {
+		...object,
+		gender: genderLC
+	};
+}
+
+export const create = async (object: PatientFormValues): Promise<Patient> => {
   const { data } = await axios.post<Patient>(
     `${apiBaseUrl}/patients`,
     object
