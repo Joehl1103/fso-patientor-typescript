@@ -74,25 +74,25 @@ const PatientListPage = ({ patients, setPatients, error: errorFromApp }: Props) 
 				<Table className={styles.patientTable}>
 					<TableHead>
 						<TableRow>
-							<TableCell>Name</TableCell>
-							<TableCell>Gender</TableCell>
-							<TableCell>Occupation</TableCell>
-							<TableCell>Health Rating</TableCell>
+							<TableCell className={styles.patientName}>Name</TableCell>
+							<TableCell className={styles.secondaryColumn}>Gender</TableCell>
+							<TableCell className={styles.secondaryColumn}>Occupation</TableCell>
+							<TableCell className={styles.ratingCell}>Health Rating</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>
 						{Object.values(patients).map((patient: PatientListItem) => (
 							<TableRow key={patient.id}>
-								<TableCell>
-									<span className={styles.patientName}>
+								<TableCell className={styles.patientName}>
+									<span >
 										{patient.name}
 										<Link className={styles.nameLink} to={`/${patient.id}`}><LaunchIcon fontSize="small" /></Link>
 									</span>
 								</TableCell>
-								<TableCell>{patient.gender}</TableCell>
-								<TableCell>{patient.occupation}</TableCell>
-								<TableCell>
-									<HealthRatingBar showText={false} rating={1} />
+								<TableCell className={styles.secondaryColumn}>{patient.gender}</TableCell>
+								<TableCell className={styles.secondaryColumn}>{patient.occupation}</TableCell>
+								<TableCell className={styles.ratingCell}>
+									<HealthRatingBar showText={false} rating={patient.rating} />
 								</TableCell>
 							</TableRow>
 						))}

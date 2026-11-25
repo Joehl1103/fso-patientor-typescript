@@ -6,7 +6,7 @@ import { Favorite } from '@mui/icons-material';
 import styles from "./health-rating-bar.module.css";
 
 type BarProps = {
-  rating: number;
+  rating: 1 | 2 | 3 | 4 | 5;
   showText: boolean;
 };
 
@@ -18,14 +18,16 @@ const HEALTHBAR_TEXTS = [
 ];
 
 const HealthRatingBar = ({ rating, showText }: BarProps) => {
+	console.log('rating',rating)
   return (
     <div>
       <Rating
         className={styles.healthRating}
+				size="small"
         readOnly
-        value={4 - rating}
-        max={4}
-        icon={<Favorite fontSize="inherit" />}
+        value={rating}
+        max={5}
+        // icon={<Favorite fontSize="inherit" />}
       />
 
       {showText ? <p>{HEALTHBAR_TEXTS[rating]}</p> : null}

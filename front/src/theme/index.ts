@@ -29,7 +29,8 @@ const colorTokens = colorModes(
 			primaryMain: tomato.tomato1,
 			textPrimary: sky.sky12,
 			headerBackground: "#DE9481",		
-			headerBorder:blueDark.blue4
+			headerBorder:blueDark.blue4,
+			mainRatingIcon: blueDark.blue4
 		},
 		modalBackground: sky.sky1,
 		modalShadow: skyDark.sky12,
@@ -51,7 +52,8 @@ const colorTokens = colorModes(
 			primaryMain: skyDark.sky3,
 			textPrimary: bronze.bronze2,
 			headerBackground: skyDark.sky4,
-			headerBorder:tomatoDark.tomato3
+			headerBorder: tomatoDark.tomato3,
+			mainRatingIcon: redDark.red7
 		},
 		modalBackground: blueDark.blue1,
 		modalShadow: skyDark.sky4,
@@ -99,7 +101,8 @@ const createAppTheme = (mode: ColorMode) => {
 							"--hospital-chip": tokens.chips.hospital,
 							"--healthcheck-chip": tokens.chips.health,
 							"--header-bg": tokens.main.headerBackground,
-							"--header-border-bottom": tokens.main.headerBorder
+							"--header-border-bottom": tokens.main.headerBorder,
+							"--main-health-rating-icon": tokens.main.mainRatingIcon
 						}
 
 					}	

@@ -1,5 +1,7 @@
-.patientTable {
+.patientTable:global(.MuiTableCell-root) {
 	margin-bottom: 1em;
+	font-size: 10px;
+	padding: 1em 1em;
 }
 
 .patientPageTemp {
@@ -33,3 +35,28 @@
 	transform: scale(1.1);
 }
 
+.ratingCell {
+	white-space: no-wrap;
+}
+
+@media (max-width: 599px){
+	.secondaryColumn:global(.MuiTableCell-root){
+	}
+
+	.patientTable:global(.MuiTableCell-root) {
+		width: 100%;
+		table-layout:fixed;
+	}
+
+	.patientTable :global(.MuiTableCell-root) {
+		font-size: 0.875rem;
+		padding: 6px 4px;
+		white-space: normal;
+		overflow-wrap: break-word;
+		vertical-align: top;
+	}
+
+	.patientName {
+		flex-wrap: wrap;
+	}
+}

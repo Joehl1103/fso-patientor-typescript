@@ -8,6 +8,7 @@ const patients: Patient[] = [
     ssn: '090786-122X',
     gender: Gender.Male,
     occupation: 'New york city cop',
+		rating: 1,
     entries: [
       {
         id: 'd811e46d-70b3-4d90-b090-4535c7cf8fb1',
@@ -31,6 +32,7 @@ const patients: Patient[] = [
     ssn: '300179-777A',
     gender: Gender.Male,
     occupation: 'Cop',
+		rating: 4,
     entries: [
       {
         id: 'fcd59fa6-c4b4-4fec-ac4d-df4fe1f85f62',
@@ -55,6 +57,7 @@ const patients: Patient[] = [
     ssn: '250470-555L',
     gender: Gender.Male,
     occupation: 'Technician',
+		rating: 2,
     entries: [],
   },
   {
@@ -64,6 +67,7 @@ const patients: Patient[] = [
     ssn: '050174-432N',
     gender: Gender.Female,
     occupation: 'Forensic Pathologist',
+		rating: 5,
     entries: [
       {
         id: 'b4f4eca1-2aa7-4b13-9a18-4a5535c3c8da',
@@ -99,6 +103,7 @@ const patients: Patient[] = [
     ssn: '090471-8890',
     gender: Gender.Male,
     occupation: 'Digital evangelist',
+		rating: 3,
     entries: [
       {
         id: '54a8746e-34c4-4cf4-bf72-bfecd039be9a',

@@ -10,7 +10,8 @@ function getPatients(): NonSensitivePatient[] {
       name: patient.name,
       dateOfBirth: patient.dateOfBirth,
       gender: patient.gender,
-      occupation: patient.occupation
+      occupation: patient.occupation,
+			rating: patient.rating
     };
   });
 }

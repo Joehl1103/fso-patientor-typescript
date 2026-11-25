@@ -76,6 +76,7 @@ export type Patient = {
   ssn: string;
   gender: string;
   occupation: string;
+	rating: 1 | 2 | 3 | 4 | 5;
   entries: Entry[];
 };
 
