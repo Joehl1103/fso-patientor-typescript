@@ -6,7 +6,7 @@ import axios from "axios";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 
 // Material UI
-import { Button, Divider, Container, Typography, IconButton } from '@mui/material';
+import { Box, Button, Divider, Container, Typography, IconButton } from '@mui/material';
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import LightModeIcon from '@mui/icons-material/LightMode';
@@ -72,20 +72,27 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <div className="App">
+				
         <Router>
+					<Box className={styles.header}>
+						<Box className={styles.menu}>
+							<ColorModeToggle/>
+							<Button className={styles.appHomeButton} component={Link} to="/" variant="contained" color="primary">
+									Home
+							</Button>
+						</Box>
+							<Typography className={styles.appHeader} variant="h3">
+								Patientor
+							</Typography>
+					</Box>
           <Container>
-						<ColorModeToggle/>
-            <Typography className={styles.appHeader} variant="h3">
-              Patientor
-            </Typography>
-            <Button className={styles.appHomeButton} component={Link} to="/" variant="contained" color="primary">
-              Home
-            </Button>
-            <Divider className={styles.appDivider} />
             <Routes>
               <Route path="/" element={<PatientListPage patients={patients} setPatients={setPatients} error={error} />} />
               <Route path="/:id" element={<PatientPage />} />
             </Routes>
+						<Box className={styles.footer}>
+							Footer
+						</Box>
           </Container>
         </Router>
       </div>

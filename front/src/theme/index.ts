@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material/styles";
-import { bronze, sky,skyDark,tomato,tomatoDark,amber, blueDark,blue,grass,grassDark } from "@radix-ui/colors";
+import { bronze, sky,skyDark,tomato,tomatoDark,amber, blueDark,blue,grass,grassDark,red,redDark } from "@radix-ui/colors";
 
 export type ColorMode = "light" | "dark";
 
@@ -18,13 +18,19 @@ function colorModes<T extends Record<string,ColorToken>>(
 
 const colorTokens = colorModes(
 	{
-    primaryMain: tomato.tomato1,
-		buttonHover: tomato.tomato2,
-    primaryContrastText: skyDark.sky1,
-    backgroundDefault: amber.amber1,
-    textPrimary: sky.sky12,
-		cancelBtnBg: skyDark.sky4,
-		cancelBtnBgHover: skyDark.sky5,
+		buttons: {
+			backgroundDefault: amber.amber1,
+			primaryContrastText: skyDark.sky1,
+			buttonHover: tomato.tomato2,
+			cancelBtnBg: skyDark.sky4,
+			cancelBtnBgHover: skyDark.sky5,
+		},
+		main: {
+			primaryMain: tomato.tomato1,
+			textPrimary: sky.sky12,
+			headerBackground: "#DE9481",		
+			headerBorder:blueDark.blue4
+		},
 		modalBackground: sky.sky1,
 		modalShadow: skyDark.sky12,
 		chips: {
@@ -34,13 +40,19 @@ const colorTokens = colorModes(
 		},
 	},
 	{
-    primaryMain: skyDark.sky3,
-		buttonHover: skyDark.sky4,
-    primaryContrastText: bronze.bronze1,
-    backgroundDefault: skyDark.sky1,
-    textPrimary: bronze.bronze2,
-		cancelBtnBg: tomatoDark.tomato3,
-		cancelBtnBgHover: tomatoDark.tomato4,
+		buttons: {
+			backgroundDefault: skyDark.sky1,
+			primaryContrastText: bronze.bronze1,
+			buttonHover: skyDark.sky4,
+			cancelBtnBg: tomatoDark.tomato3,
+			cancelBtnBgHover: redDark.red6,
+		},
+		main: {
+			primaryMain: skyDark.sky3,
+			textPrimary: bronze.bronze2,
+			headerBackground: skyDark.sky4,
+			headerBorder:tomatoDark.tomato3
+		},
 		modalBackground: blueDark.blue1,
 		modalShadow: skyDark.sky4,
 		chips: {
@@ -58,27 +70,30 @@ const createAppTheme = (mode: ColorMode) => {
     palette: {
       mode,
       primary: {
-        main: tokens.primaryMain,
-        contrastText: tokens.primaryContrastText,
+        main: tokens.main.primaryMain,
+        contrastText: tokens.buttons.primaryContrastText,
       },
       background: {
-        default: tokens.backgroundDefault,
+        default: tokens.buttons.backgroundDefault,
       },
       text: {
-        primary: tokens.textPrimary,
+        primary: tokens.main.textPrimary,
       },
     },
 		components: {
 				MuiCssBaseline: {
 					styleOverrides: {
 						body: {
-							"--cancel-button-bg": tokens.cancelBtnBg,
-							"--cancel-button-bg-hover": tokens.cancelBtnBgHover,
+							"--background-color-main": tokens.main.primaryMain,
+							"--cancel-button-bg": tokens.buttons.cancelBtnBg,
+							"--cancel-button-bg-hover": tokens.buttons.cancelBtnBgHover,
 							"--add-patient-modal-background": tokens.modalBackground,
 							"--modal-shadow": tokens.modalShadow,
 							"--occupational-chip": tokens.chips.occupational,
 							"--hospital-chip": tokens.chips.hospital,
-							"--healthcheck-chip": tokens.chips.health
+							"--healthcheck-chip": tokens.chips.health,
+							"--header-bg": tokens.main.headerBackground,
+							"--header-border-bottom": tokens.main.headerBorder
 						}
 
 					}	
@@ -87,7 +102,7 @@ const createAppTheme = (mode: ColorMode) => {
 				styleOverrides: {
 					root: {
 						"&:hover": {
-							backgroundColor: tokens.buttonHover,
+							backgroundColor: tokens.buttons.buttonHover,
 						}
 					}
 				}
