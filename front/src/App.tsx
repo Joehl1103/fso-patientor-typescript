@@ -27,6 +27,10 @@ import createAppTheme, { ColorMode } from "./theme";
 // Styles
 import styles from "./App.module.css";
 
+// Font Awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+
 const App = () => {
   const [patients, setPatients] = useState<PatientListItem[]>([]);
 	const [error,setError] = useState<string>("");
@@ -85,15 +89,16 @@ const App = () => {
 								Patientor
 							</Typography>
 					</Box>
-          <Container>
+          <Container className={styles.page}>
             <Routes>
               <Route path="/" element={<PatientListPage patients={patients} setPatients={setPatients} error={error} />} />
               <Route path="/:id" element={<PatientPage />} />
             </Routes>
-						<Box className={styles.footer}>
-							Footer
-						</Box>
           </Container>
+					<Box className={styles.footer}>
+						2025-26 by Joseph Loomis. <a href="https://github.com/Joehl1103/fso-patientor-typescript"><FontAwesomeIcon icon={faGithub} /></a>
+
+					</Box>
         </Router>
       </div>
     </ThemeProvider>

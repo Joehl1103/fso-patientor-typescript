@@ -1,3 +1,9 @@
+.page:global(.MuiContainer-root){
+	display: flex;
+	flex-direction: column;
+	flex:1;
+}
+
 .appHeader:global(.MuiTypography-root) {
 	padding-bottom: 0.5em;
 	text-align: center;
@@ -15,28 +21,26 @@
 	opacity: 100%;
 	width: 100%;
 	z-index: 1000;
-	border-bottom: 1px double var(--header-border-bottom);
+	border-bottom: 1px solid var(--header-border-bottom);
 }
 
 .footer:global(.MuiBox-root){
-	height: 10em;
-	background-color: (--header-bg);
+	height: 3rem;
+	text-align: center;
+	align-content: center;
+	background-color: var(--header-bg);
+	margin-top: auto;
+	padding: 0;
+	font-size: 0.75rem;
+	border-top: 1px solid var(--header-border-bottom);
 }
 
 .menu:global(.MuiBox-root){
 	display: flex;
 	flex-direction: row;
 	align-items:center;
-	justify-content: flex-start;
+	justify-content: space-between;
 	gap: 1rem;
 	padding:0.5em 0.5em 0 0.5em;
 	background-color: var(--header-bg);
 }
-.menu > :nth-child(2){
-	margin-left: auto;
-}
-
-.menu > :nth-child(1){
-	margin-right: auto;
-}
-

@@ -8,7 +8,6 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHospital, faHelmetSafety, faHeart } from "@fortawesome/free-solid-svg-icons";
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
 // Shared types
 import { Diagnosis, Entry, EntryType, HealthCheckRating, SickLeave } from "../../../../types";
