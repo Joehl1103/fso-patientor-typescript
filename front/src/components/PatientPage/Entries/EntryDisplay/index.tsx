@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 // Material UI
-import {Divider,Typography, Card, Chip } from "@mui/material";
+import { Box, Divider,Typography, Card, Chip } from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 // Font Awesome
@@ -143,7 +143,7 @@ function EntryDisplay({ entry }: { entry: Entry }) {
 
   return (
     <div>
-      <div className={styles.entryBlock}>
+      <Box className={styles.entryBlock}>
         <Card className={styles.entryBlockInner}>
 					{/*Base*/}
           <div>
@@ -160,7 +160,7 @@ function EntryDisplay({ entry }: { entry: Entry }) {
 					{/*Variability by type*/}
           <div>{renderTypes(entry)}</div>
         </Card>
-      </div>
+      </Box>
       <Divider />
     </div >
   );

@@ -55,14 +55,16 @@
 	margin: 0;
 }
 
-.entryBlock {
+.entryBlock:global(.MuiBox-root) {
 	margin-top: 10px;
 	margin-bottom: 20px;
 }
 
-.entryBlockInner {
-	margin-bottom: 20px;
+.entryBlockInner:global(.MuiCard-root) {
+	padding: 1em;
+	background-color:var(--entries-bg);
 }
+
 
 .occupationalChip:global(.MuiChip-root) {
 	background-color: var(--occupational-chip);

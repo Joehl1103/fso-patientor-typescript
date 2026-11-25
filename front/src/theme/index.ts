@@ -1,16 +1,16 @@
 import { createTheme } from "@mui/material/styles";
-import { bronze, sky,skyDark,tomato,tomatoDark,amber, blueDark,blue,grass,grassDark,red,redDark } from "@radix-ui/colors";
+import { slate, bronze, sky,skyDark,tomato,tomatoDark,amber, blueDark,blue,grass,grassDark,red,redDark } from "@radix-ui/colors";
 
 export type ColorMode = "light" | "dark";
 
-// ColorToken can be either a string or an object where each key is a string and the value is also a string
-type ColorToken = string | { [key: string]: string };
+// A color, a group of colors, or a group that holds one nested color group (entries.chips).
+type ColorGroup = { [key: string]: string };
+type ColorToken = string | ColorGroup | { [key: string]: string | ColorGroup };
 
 type Same<T> = { [K in keyof T]: T[K] };
-// extends: T must at least have the type of <Record<string,ColorToken>>, where
-// light or dark are the string and the object is the ColorToken
-function colorModes<T extends Record<string,ColorToken>>(
-	light: Same<T>,
+// Infer the shape from light. Dark must match that shape key for key.
+function colorModes<T extends Record<string, ColorToken>>(
+	light: T,
 	dark: Same<T>
 ) {
 	return { light, dark };
@@ -34,10 +34,13 @@ const colorTokens = colorModes(
 		},
 		modalBackground: sky.sky1,
 		modalShadow: skyDark.sky12,
-		chips: {
-			hospital: tomato.tomato3,
-			occupational: blue.blue3,
-			health: grass.grass3
+		entries: {
+			background: slate.slate4,
+			chips: {
+				hospital: tomato.tomato3,
+				occupational: blue.blue3,
+				health: grass.grass3
+			},
 		},
 	},
 	{
@@ -57,10 +60,13 @@ const colorTokens = colorModes(
 		},
 		modalBackground: blueDark.blue1,
 		modalShadow: skyDark.sky4,
-		chips: {
-			hospital: tomatoDark.tomato3,
-			occupational: blueDark.blue3,
-			health: grassDark.grass3
+		entries: {
+			background: skyDark.sky2,
+			chips: {
+				hospital: tomatoDark.tomato3,
+				occupational: blueDark.blue3,
+				health: grassDark.grass3
+			},
 		},
 	},
 );
@@ -97,12 +103,13 @@ const createAppTheme = (mode: ColorMode) => {
 							"--cancel-button-bg-hover": tokens.buttons.cancelBtnBgHover,
 							"--add-patient-modal-background": tokens.modalBackground,
 							"--modal-shadow": tokens.modalShadow,
-							"--occupational-chip": tokens.chips.occupational,
-							"--hospital-chip": tokens.chips.hospital,
-							"--healthcheck-chip": tokens.chips.health,
+							"--occupational-chip": tokens.entries.chips.occupational,
+							"--hospital-chip": tokens.entries.chips.hospital,
+							"--healthcheck-chip": tokens.entries.chips.health,
 							"--header-bg": tokens.main.headerBackground,
 							"--header-border-bottom": tokens.main.headerBorder,
-							"--main-health-rating-icon": tokens.main.mainRatingIcon
+							"--main-health-rating-icon": tokens.main.mainRatingIcon,
+							"--entries-bg": tokens.entries.background
 						}
 
 					}	
