@@ -67,6 +67,12 @@ const createAppTheme = (mode: ColorMode) => {
   const tokens = colorTokens[mode];
 	console.log('tokens',tokens);
   return createTheme({
+		typography: {
+			fontSize: 15,
+			body1: {
+				fontSize: 15
+			},
+		},
     palette: {
       mode,
       primary: {
