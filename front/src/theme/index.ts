@@ -1,5 +1,15 @@
 import { createTheme } from "@mui/material/styles";
-import { slate, bronze, sky,skyDark,tomato,tomatoDark,amber, blueDark,blue,grass,grassDark,redDark } from "@radix-ui/colors";
+import { 
+	slate, 
+	bronze, 
+	sky, skyDark,
+	tomato,tomatoDark,
+	amber, 
+	blue, blueDark,
+	grass,grassDark,
+	green,
+	red, redDark 
+} from "@radix-ui/colors";
 
 export type ColorMode = "light" | "dark";
 
@@ -41,6 +51,12 @@ const colorTokens = colorModes(
 				occupational: blue.blue3,
 				health: grass.grass3
 			},
+			healthCheck: {
+				critical: red.red10,
+				high: tomato.tomato4,
+				low: amber.amber10, 
+				healthy: grass.grass8
+			}
 		},
 	},
 	{
@@ -66,6 +82,12 @@ const colorTokens = colorModes(
 				hospital: tomatoDark.tomato3,
 				occupational: blueDark.blue3,
 				health: grassDark.grass3
+			},
+			healthCheck: {
+				critical: red.red10,
+				high: tomato.tomato4,
+				low: amber.amber8, 
+				healthy: green.green11
 			},
 		},
 	},
@@ -109,7 +131,11 @@ const createAppTheme = (mode: ColorMode) => {
 							"--header-bg": tokens.main.headerBackground,
 							"--header-border-bottom": tokens.main.headerBorder,
 							"--main-health-rating-icon": tokens.main.mainRatingIcon,
-							"--entries-bg": tokens.entries.background
+							"--entries-bg": tokens.entries.background,
+							"--healthcheck-critical": tokens.entries.healthCheck.critical,
+							"--healthcheck-high": tokens.entries.healthCheck.high,
+							"--healthcheck-low": tokens.entries.healthCheck.low,
+							"--healthcheck-healthy": tokens.entries.healthCheck.healthy,
 						}
 
 					}	

@@ -80,8 +80,6 @@ function renderSickLeave(sickLeave: SickLeave) {
     );
   }
 
-  
-
   function renderTypes(entry: Entry) {
     switch (entry.type) {
       case EntryType.HOSPITAL:
@@ -91,14 +89,11 @@ function renderSickLeave(sickLeave: SickLeave) {
           </div>
         );
       case EntryType.HEALTHCHECK:
-        const healthIconObject = {
-          icon: FavoriteIcon,
-          iconClassName: setHealthIconClass(entry.healthCheckRating)
-        };
+			const healthIconClass = setHealthIconClass(entry.healthCheckRating);
         return (
-          <div>
+          <div className={styles.healthCheck}>
 						<p>Health rating:</p>
-						{healthIconObject ? <healthIconObject.icon className={healthIconObject.iconClassName} /> : null}
+						<span className={healthIconClass}><FontAwesomeIcon icon={faHeart} /></span>
           </div>
         );
       case EntryType.OCCUPATIONAL:

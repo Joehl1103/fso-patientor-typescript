@@ -111,7 +111,7 @@ const patients: Patient[] = [
         specialist: 'Dr Byte House',
         type: EntryType.HEALTHCHECK,
         description: 'Digital overdose, very bytestatic. Otherwise healthy.',
-        healthCheckRating: 0,
+        healthCheckRating: 3,
       },
     ],
   },

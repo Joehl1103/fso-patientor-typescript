@@ -33,20 +33,20 @@
 	margin-bottom: 0;
 }
 
-.healthCritical:global(.MuiSvgIcon-root) {
-	color: red;
+.healthCritical {
+	color: var(--healthcheck-critical);
 }
 
-.healthHigh:global(.MuiSvgIcon-root) {
-	color: orange;
+.healthHigh {
+	color: var(--healthcheck-high);
 }
 
-.healthLow:global(.MuiSvgIcon-root) {
-	color: yellow;
+.healthLow {
+	color: var(--healthcheck-low);
 }
 
-.healthHealthy:global(.MuiSvgIcon-root) {
-	color: green;
+.healthHealthy {
+	color: var(--healthcheck-healthy);
 }
 
 .dischargeNote {
@@ -77,4 +77,11 @@
 
 .healthcheckChip:global(.MuiChip-root) {
 	background-color: var(--healthcheck-chip);
+}
+
+.healthCheck {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.5em;
 }
