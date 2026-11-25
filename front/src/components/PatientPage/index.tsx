@@ -6,8 +6,7 @@ import { useParams } from "react-router-dom";
 import * as z from 'zod';
 
 // Material UI
-import { IconButton, IconProps, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
+import { Divider, IconProps, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material';
 import FemaleIcon from '@mui/icons-material/Female';
 import MaleIcon from '@mui/icons-material/Male';
 
@@ -20,6 +19,7 @@ import services from '../../services/patients';
 // Local components
 import EntryDisplay from './Entries/EntryDisplay.tsx';
 import EntryForm from './Entries/EntryForm/index.tsx';
+import Header from './Entries/EntryForm/Header.tsx';
 
 // Styles
 import styles from "./patient-page.module.css";
@@ -42,28 +42,7 @@ function RowAndCell({ left, right }: { left: string, right: string }) {
   );
 }
 
-function EntryFormDisplay(
-  { entryFormVisible: _entryFormVisible, handleEntryFormCheck }: {
-    entryFormVisible: boolean,
-    handleEntryFormCheck(event: React.SyntheticEvent
-    ): void
-  }) {
-  return (
-    <div className={styles.entryFormHead}>
-      <IconButton
-        onClick={handleEntryFormCheck}
-        size='small'
-        className={styles.addEntryButton}
-      >
-        <AddIcon />
-      </IconButton>
-      <Typography
-        variant="body2"
-        className={styles.addEntryLabel}
-      >add entry</Typography>
-    </div>
-  );
-}
+
 
 function PatientPage() {
   const [patient, setPatient] = useState<Patient>();
@@ -91,6 +70,7 @@ function PatientPage() {
   const iconSize: IconProps['fontSize'] = 'large';
   return (
     <div>
+			{/* Patient Info Table*/}
       <Typography className={styles.patientName} variant='h4'>
         {patient.name}{' '}{patient.gender === 'male' ? <MaleIcon fontSize={iconSize} /> : <FemaleIcon fontSize={iconSize} />}
       </Typography>
@@ -105,18 +85,21 @@ function PatientPage() {
           </Table>
         </TableContainer>
       </div>
+			{/* Patient Entries */}
       <div>
         <Typography variant='h5' className={styles.entriesHeading}>Entries</Typography>
+				<Header setEntryFormVisible={setEntryFormVisible} entryFormVisible={entryFormVisible}/>
+				<Divider/>
+				{/* Entry Form */}
         {entryFormVisible
           ? <EntryForm
             setEntryFormVisible={setEntryFormVisible}
             patientId={params.id}
             setEntries={setEntries}
           />
-          : <EntryFormDisplay
-            entryFormVisible={entryFormVisible}
-            handleEntryFormCheck={handleEntryFormCheck}
-          />}
+          : null}
+				{/* Individual Entries */}
+				<Divider/>
         {entries && entries.length > 0
           ? entries.map(e => {
             return (

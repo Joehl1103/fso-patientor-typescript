@@ -105,7 +105,6 @@ function EntryForm(
         <Notification
           message={notificationMessage}
           type={notificationType} />}
-      <Header setEntryFormVisible={setEntryFormVisible} />
       <EntryTypeSelect
         baseEntryFormData={baseEntryFormData}
         setBaseEntryFormData={setBaseEntryFormData} />
