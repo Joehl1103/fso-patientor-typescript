@@ -80,7 +80,7 @@ export type Patient = {
   entries: Entry[];
 };
 
-export type PatientFormValues = Omit<Patient, "id" | "entries">;
+export type PatientFormValues = Omit<Patient, "id" | "entries" | "rating">;
 
 export type NonSensitivePatient = Omit<Patient, 'ssn' | 'entries'>;
 

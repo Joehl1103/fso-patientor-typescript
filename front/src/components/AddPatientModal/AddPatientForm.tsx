@@ -49,7 +49,7 @@ const AddPatientForm = ({ onCancel, onSubmit }: Props) => {
       occupation,
       ssn,
       dateOfBirth,
-      gender
+      gender,
     });
   };
 
@@ -64,6 +64,7 @@ const AddPatientForm = ({ onCancel, onSubmit }: Props) => {
         />
         <TextField
           label="Social security number"
+					placeholder="XXX-XXX-XXXX"
           fullWidth
           value={ssn}
           onChange={({ target }) => setSsn(target.value)}
