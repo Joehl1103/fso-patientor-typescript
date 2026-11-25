@@ -2,8 +2,7 @@
 import { ComponentType, useEffect, useState } from "react";
 
 // Material UI
-import { Box, Divider, SvgIconProps, Typography } from "@mui/material";
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import { Box, Divider, SvgIconProps, Typography, Card } from "@mui/material";
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import DeviceThermostatIcon from '@mui/icons-material/DeviceThermostat';
 import EngineeringIcon from '@mui/icons-material/Engineering';
@@ -11,11 +10,11 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 
 // Shared types
-import { Diagnosis, Entry, EntryType, HealthCheckRating, SickLeave } from "../../../types";
+import { Diagnosis, Entry, EntryType, HealthCheckRating, SickLeave } from "../../../../types";
 
 // API services and helpers
-import diagnosesService from "../../../services/diagnoses";
-import { exhaustiveTypeGuard } from "../../../utilities";
+import diagnosesService from "../../../../services/diagnoses";
+import { exhaustiveTypeGuard } from "../../../../utilities";
 
 // Styles
 import styles from "./EntryDisplay.module.css";
@@ -86,49 +85,18 @@ function BaseEntryDisplay({ entry }: { entry: Entry }) {
   const Icon = setTypeIcon(type);
   return (
     <div>
-      <div >
-        <ItemDivWithIcon
-          icon={CalendarTodayIcon}
-          text={date}
-          typeIcon={Icon}
-        />
-      </div>
+      <p >
+				{date}
+      </p>
       <div className={styles.baseEntryDisplay}>
-        <ItemDivWithIcon
-          icon={ChevronRightIcon}
-          text={description} />
-        <ItemDivWithIcon
-          icon={ChevronRightIcon}
-          text={`Specialist: ${specialist}`}
-        />
+				<p>{description}</p>
+				<p>Specialist: {specialist}</p>
       </div>
     </div >
   );
 }
-function EntryDisplay({ entry }: { entry: Entry }) {
-  const [diagnoses, setDiagnoses] = useState<Diagnosis[] | []>([]);
-  const diagnosticCodes: string[] | null = entry.diagnosisCodes ? entry.diagnosisCodes : null;
-  useEffect(() => {
-    if (diagnosticCodes) {
-      fetchDiagnoses(diagnosticCodes)
-        .then((diagnoses: Diagnosis[]) => {
-          setDiagnoses(diagnoses);
-        });
-    }
-  }, [diagnosticCodes]);
 
-  function renderSickLeave(sickLeave: SickLeave) {
-    return (
-      <div>
-        <ItemDivWithIcon icon={ChevronRightIcon} text={"Sick Leave:"} />
-        <ul className={styles.sickLeaveUL}>
-          <li><Typography variant="body2"> Start: {sickLeave.startDate}</Typography></li>
-          <li><Typography variant="body2">End: {sickLeave.endDate}</Typography></li>
-        </ul>
-      </div>
-    );
-  }
-  function setHealthIconClass(rating: HealthCheckRating) {
+function setHealthIconClass(rating: HealthCheckRating) {
     switch (rating) {
       case HealthCheckRating["CriticalRisk"]:
         return styles.healthCritical;
@@ -142,6 +110,20 @@ function EntryDisplay({ entry }: { entry: Entry }) {
         exhaustiveTypeGuard(rating);
     }
   }
+
+function renderSickLeave(sickLeave: SickLeave) {
+    return (
+      <div>
+        <ItemDivWithIcon icon={ChevronRightIcon} text={"Sick Leave:"} />
+        <ul className={styles.sickLeaveUL}>
+          <li><Typography variant="body2"> Start: {sickLeave.startDate}</Typography></li>
+          <li><Typography variant="body2">End: {sickLeave.endDate}</Typography></li>
+        </ul>
+      </div>
+    );
+  }
+
+  
 
   function renderTypes(entry: Entry) {
     switch (entry.type) {
@@ -185,14 +167,30 @@ function EntryDisplay({ entry }: { entry: Entry }) {
     }
   }
 
+// Main
+function EntryDisplay({ entry }: { entry: Entry }) {
+  const [diagnoses, setDiagnoses] = useState<Diagnosis[] | []>([]);
+  const diagnosticCodes: string[] | null = entry.diagnosisCodes ? entry.diagnosisCodes : null;
+  useEffect(() => {
+    if (diagnosticCodes) {
+      fetchDiagnoses(diagnosticCodes)
+        .then((diagnoses: Diagnosis[]) => {
+          setDiagnoses(diagnoses);
+        });
+    }
+  }, [diagnosticCodes]);
+
+  
+
   return (
     <div>
       <div className={styles.entryBlock}>
-        <div className={styles.entryBlockInner}>
+        <Card className={styles.entryBlockInner}>
           <BaseEntryDisplay entry={entry} />
           {diagnoses.length > 0 ? <DiagnosticCodes diagnoses={diagnoses} /> : null}
+					<Divider/>
           <div>{renderTypes(entry)}</div>
-        </div>
+        </Card>
       </div>
       <Divider />
     </div >

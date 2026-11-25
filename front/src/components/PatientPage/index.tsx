@@ -17,7 +17,7 @@ import { Patient, Entry } from "../../types.ts";
 import services from '../../services/patients';
 
 // Local components
-import EntryDisplay from './Entries/EntryDisplay.tsx';
+import EntryDisplay from './Entries/EntryDisplay/index.tsx';
 import EntryForm from './Entries/EntryForm/index.tsx';
 import Header from './Entries/EntryForm/Header.tsx';
 

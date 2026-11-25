@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert';
 import { fetchDiagnoses } from './EntryDisplay';
-import { Diagnosis } from '../../../types';
+import { Diagnosis } from '../../../../types';
 
 test('returns diagnoses from codes', async () => {
   const codes: string[] = ['M24.2', 'M51.2'];
