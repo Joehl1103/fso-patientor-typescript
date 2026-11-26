@@ -23,7 +23,6 @@ interface Props {
 
 const AddPatientModal = ({ modalOpen, onClose, onSubmit, error, setError }: Props) => {
 	const [alertVisible,setAlertVisible] = useState<boolean>(false);
-	console.log('alertVisible',alertVisible)
 	useEffect(() =>{
 		if(error && error.length > 1){
 			setAlertVisible(true);
@@ -45,7 +44,7 @@ const AddPatientModal = ({ modalOpen, onClose, onSubmit, error, setError }: Prop
 			<DialogTitle>Add a new patient</DialogTitle>
 			<Divider />
 			<DialogContent>
-				{alertVisible && <Alert className={styles.alert} data-testid="modal-alert" severity="error" onClose={() => handleAlertVisibility}>{error}</Alert>}
+				{alertVisible && <Alert className={styles.alert} data-testid="modal-alert" severity="error" onClose={handleAlertVisibility}>{error}</Alert>}
 				<AddPatientForm onSubmit={onSubmit} onCancel={onClose} />
 			</DialogContent>
 		</Dialog>
