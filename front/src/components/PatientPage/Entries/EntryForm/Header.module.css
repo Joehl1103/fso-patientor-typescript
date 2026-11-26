@@ -2,6 +2,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	margin-bottom:1em;
 }
 
 .closeFormRow {
@@ -12,4 +13,8 @@
 
 .cancelIcon:global(.MuiSvgIcon-root):hover {
 	cursor: pointer;
+}
+
+.toggleButton:global(.MuiButton-root) {
+
 }

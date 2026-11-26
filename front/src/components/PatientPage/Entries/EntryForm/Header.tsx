@@ -22,8 +22,10 @@ function ToggleFormButton({ setEntryFormVisible,setEntryBool,iconName, text }: T
 	return (
 		<div>
 			<Button 
+				className={styles.toggleButton}
 				onClick={() => setEntryFormVisible(setEntryBool)} 
-				style={{backgroundColor: "white"}}>
+				variant="contained"
+				size="small">
 				<FontAwesomeIcon icon={iconName} />&nbsp;{`${text}`}
 			</Button>
 		</div>
@@ -33,7 +35,7 @@ function ToggleFormButton({ setEntryFormVisible,setEntryBool,iconName, text }: T
 function Header({ entryFormVisible, setEntryFormVisible }: Props) {
   return (
     <Box className={styles.headerRow}>
-      <Typography variant='body1'>Add Entry</Typography>
+      <Typography variant="h6">Add Entry</Typography>
       <Box className={styles.closeFormRow}>
 				{
 				entryFormVisible ? 

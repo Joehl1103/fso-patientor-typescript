@@ -82,7 +82,7 @@ function PatientPage() {
       </div>
 			{/* Patient Entries */}
       <div>
-        <Typography variant='h5' className={styles.entriesHeading}>Entries</Typography>
+        <Typography variant='h5' sx={{ textAlign: "center" }}className={styles.entriesHeading}>Entries</Typography>
 				<Header setEntryFormVisible={setEntryFormVisible} entryFormVisible={entryFormVisible}/>
 				<Divider/>
 				{/* Entry Form */}
