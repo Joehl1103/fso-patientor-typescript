@@ -45,12 +45,9 @@ const App = () => {
 
   useEffect(() => {
 		axios.get<void>(`${apiBaseUrl}/ping`)
-			.then((_) => {
-				const fetchPatientList = async () => {
+			.then(async (_) => {
 					const patients = await patientService.getAll();
 					setPatients(patients);
-				};
-				setInterval(async () => fetchPatientList(),500);
 			})
 			.catch(e => {
 				if(e instanceof Error){

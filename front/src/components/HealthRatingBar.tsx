@@ -17,7 +17,6 @@ const HEALTHBAR_TEXTS = [
 ];
 
 const HealthRatingBar = ({ rating, showText }: BarProps) => {
-	console.log('rating',rating)
   return (
     <div>
       <Rating
@@ -26,7 +25,6 @@ const HealthRatingBar = ({ rating, showText }: BarProps) => {
         readOnly
         value={rating}
         max={5}
-        // icon={<Favorite fontSize="inherit" />}
       />
 
       {showText ? <p>{HEALTHBAR_TEXTS[rating]}</p> : null}
