@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 // Material UI
 import { Box, Divider,Typography, Card, Chip } from "@mui/material";
-import FavoriteIcon from '@mui/icons-material/Favorite';
 
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

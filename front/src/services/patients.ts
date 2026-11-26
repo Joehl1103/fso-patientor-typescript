@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Patient, PatientFormValues, PatientListItem, Gender } from "../types";
+import { Patient, PatientFormValues, PatientListItem } from "../types";
 
 import { apiBaseUrl } from "../constants";
 
@@ -52,6 +52,7 @@ export const create = async (object: PatientFormValues): Promise<Patient> => {
 		if(e instanceof Error){
 			throw new Error(e.message);
 		}
+		throw e;
 	}
 };
 

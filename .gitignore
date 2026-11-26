@@ -6,3 +6,5 @@ dist
 .worktrees
 .editorconfig
 .remember
+back/build/
+front/dist

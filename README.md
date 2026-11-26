@@ -31,7 +31,6 @@ Patientor is a full-stack TypeScript application for managing patient records. T
 
 - `back/` — Express API (TypeScript)
 - `front/` — React + Vite client (TypeScript)
-- `docs/` — project documentation and plans
 
 ## Prerequisites
 
@@ -79,13 +78,26 @@ Backend (`back/`):
 Frontend (`front/`):
 
 - `npm run dev` — start Vite dev server
-- `npm run build` — build production bundle
+- `npm run build` — typecheck with `tsc`, then build the production bundle
 - `npm run preview` — preview build
 - `npm run lint` — lint
+- `npm test` — run Vitest
 
 ## Testing
 
-Testing uses Node's built-in test runner with Supertest for backend API routes, plus lightweight unit tests in the frontend for typed service helpers and data mapping logic. The focus is on verifying API response shapes and entry creation behavior while keeping front-end tests centered on pure function outputs.
+Backend tests use Node's built-in `node:test` runner through `ts-node-test`. Supertest calls the Express app in process, so the API does not need to be running. From `back/`:
+
+```bash
+npm test
+```
+
+Frontend tests use Vitest in jsdom with React Testing Library. From `front/`:
+
+```bash
+npm test
+```
+
+Component tests cover the patient list, the add-patient form, and the add-patient modal. `validateNewPatient` is tested without the network. Diagnosis lookup, fetching diagnoses for an entry, and creating a patient call the API at `VITE_API_BASE_URL`, or `http://localhost:3000/api` when that variable is unset. Start the backend before those tests.
 
 ## Frontend styles
 
