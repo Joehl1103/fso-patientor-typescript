@@ -34,7 +34,9 @@ function getPatientById(id: string) {
 function addPatient(newPatientEntry: NewPatientEntry): Patient {
   const newPatient: Patient = {
     id: uuid(),
-    ...newPatientEntry
+    ...newPatientEntry,
+		entries: [],
+		rating: null
   };
   return newPatient;
 }

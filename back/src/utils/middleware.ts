@@ -14,7 +14,9 @@ export function parseNewPatientData(req: Request, _res: Response, next: NextFunc
     newPatientDataSchema.parse(req.body);
     return next();
   } catch (e: unknown) {
-    next(e);
+		if(e instanceof Error){
+			next(e);
+		}
   }
 };
 
@@ -45,6 +47,7 @@ export function parseNewEntryData(req: Request, _res: Response, next: NextFuncti
 };
 
 export function errorMiddleware(err: unknown, _req: Request, res: Response, _next: NextFunction): Response {
+	console.log('err',err)
   if (err instanceof z.ZodError) {
     console.error('error',err);
     return res.status(400).send({ error: err.issues });

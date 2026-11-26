@@ -1,5 +1,6 @@
 import { defineConfig, mergeConfig } from 'vitest/config';
-import viteConfig from './vite.config.ts';
+import viteConfig from './vite.config';
+import '@testing-library/jest-dom/vitest';
 
 export default mergeConfig(
   viteConfig,
@@ -10,3 +11,4 @@ export default mergeConfig(
     },
   }),
 );
+

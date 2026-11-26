@@ -47,6 +47,7 @@ router.post('/', parseNewPatientData, (req: Request<unknown, unknown, NewPatient
 
 router.post('/:id/entries', parseNewEntryData, (req: Request<unknown, unknown, EntryWithoutId>, res: Response<EntryWithoutId>) => {
   const entry: EntryWithoutId = req.body;
+	console.log('entry',entry);
   res.status(201).json(entry);
 });
 

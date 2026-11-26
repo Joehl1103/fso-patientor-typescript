@@ -6,3 +6,6 @@
 
 }
 
+.alert:global(.MuiAlert-root){
+	margin-bottom:1em;
+}

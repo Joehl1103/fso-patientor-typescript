@@ -31,7 +31,11 @@ interface Props {
 	error: string;
 }
 
-const PatientListPage = ({ patients, setPatients, error: errorFromApp }: Props) => {
+const PatientListPage = ({ 
+	patients, 
+	setPatients, 
+	error: errorFromApp 
+}: Props) => {
 	
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [error, setError] = useState<string>();
@@ -44,9 +48,15 @@ const PatientListPage = ({ patients, setPatients, error: errorFromApp }: Props) 
   };
 
   const submitNewPatient = async (values: PatientFormValues) => {
-    const patient = await patientService.create(values);
-    setPatients(patients.concat(patient));
-    setModalOpen(false);
+		try {
+			const patient = await patientService.create(values);
+			setPatients(patients.concat(patient));
+			setModalOpen(false);
+		} catch(e){
+			if(e instanceof Error){
+				setError(e.message);
+			}
+		}
   };
 
 	if(errorFromApp){
@@ -105,6 +115,7 @@ const PatientListPage = ({ patients, setPatients, error: errorFromApp }: Props) 
 					modalOpen={modalOpen}
 					onSubmit={submitNewPatient}
 					error={error}
+					setError={setError}
 					onClose={closeModal}
 				/>
 				<Box className={styles.buttonDiv}>

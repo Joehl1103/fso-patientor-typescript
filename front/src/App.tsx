@@ -76,7 +76,6 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <div className="App">
-				
         <Router>
 					<Box className={styles.header}>
 						<Box className={styles.menu}>

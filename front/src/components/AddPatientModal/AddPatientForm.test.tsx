@@ -3,10 +3,11 @@ import { expect, test, vi } from "vitest";
 import { Gender } from "../../types";
 import AddPatientForm from "./AddPatientForm";
 
-test("submits the entered patient", () => {
-  const onSubmit = vi.fn();
-  const onCancel = vi.fn();
 
+const onSubmit = vi.fn();
+
+test("submits the entered patient", () => {
+	const onCancel = vi.fn();
   render(<AddPatientForm onCancel={onCancel} onSubmit={onSubmit} />);
 
   fireEvent.change(screen.getByLabelText("Name"), {
@@ -34,3 +35,5 @@ test("submits the entered patient", () => {
 
 
 });
+
+
