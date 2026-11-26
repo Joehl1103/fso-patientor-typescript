@@ -1,6 +1,5 @@
 import { test, expect, describe } from "vitest";
 import { create, validateNewPatient } from "./patients.ts";
-import axios from "axios";
 import type { Patient, PatientFormValues } from "../types";	
 
 
@@ -14,7 +13,7 @@ test('creating returns a patient', async () => {
 			occupation: "Something"
 	});
 expect(patient).toStrictEqual({
-			id: expect.any(Number),
+			id: expect.stringMatching(/[\w\d-]+/),
 			name: "Joey Loomis",
 			dateOfBirth: "2026-11-04",
 		//TODO: this will need to change
@@ -24,9 +23,6 @@ expect(patient).toStrictEqual({
 			entries: [],
 			rating: null
 	});
-	// } catch (e){
-	// 	console.log(e.response.data.error[0].message);
-	// }
 });
 
 describe("validating new patient data", () => {

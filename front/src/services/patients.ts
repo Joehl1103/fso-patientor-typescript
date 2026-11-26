@@ -41,12 +41,18 @@ export function validateNewPatient(object: PatientFormValues): PatientFormValues
 }
 
 export const create = async (object: PatientFormValues): Promise<Patient> => {
+	try {
+	const validatedPatient: PatientFormValues = validateNewPatient(object);
   const { data } = await axios.post<Patient>(
     `${apiBaseUrl}/patients`,
-    object
+    validatedPatient
   );
-
   return data;
+	} catch (e){
+		if(e instanceof Error){
+			throw new Error(e.message);
+		}
+	}
 };
 
 export default {
